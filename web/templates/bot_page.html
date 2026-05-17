@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebProArts | SaaS Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FFFFFF; }
+        
+        .bg-soft-aqua { background-color: #E6FDFF; }
+        .text-aqua-deep { color: #00A3A3; }
+        .border-aqua-soft { border-color: #D1F8FA; }
+
+        /* SaaS Elevation Shadow */
+        .saas-shadow { box-shadow: 0 10px 30px -10px rgba(0, 163, 163, 0.1); }
+
+        /* Animation */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-saas { animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        #chat-history::-webkit-scrollbar { width: 5px; }
+        #chat-history::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 20px; }
+    </style>
+</head>
+<body class="text-slate-900 h-screen flex flex-col">
+
+    <header class="border-b border-slate-100 py-4 px-10 flex justify-between items-center bg-white/80 backdrop-blur-xl sticky top-0 z-50">
+        <div class="flex items-center space-x-4">
+            <div class="w-8 h-8 bg-[#00F5FF] rounded-lg flex items-center justify-center text-slate-900 font-bold text-sm shadow-sm">
+                W
+            </div>
+            <div class="h-4 w-[1px] bg-slate-200"></div>
+            <h1 class="font-semibold text-sm tracking-tight text-slate-500 uppercase">Early Access <span class="text-slate-900">v3.0</span></h1>
+        </div>
+        <div class="flex items-center space-x-6">
+            <div class="hidden sm:flex items-center space-x-2">
+                <span class="w-1.5 h-1.5 bg-[#00F5FF] rounded-full animate-pulse"></span>
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">System Operational</span>
+            </div>
+            <a href="/" class="text-xs font-bold py-2 px-5 bg-slate-50 border border-slate-200 rounded-full hover:bg-slate-100 transition-all text-slate-600">Exit Console</a>
+        </div>
+    </header>
+
+    <main class="flex-1 flex flex-col relative max-w-4xl mx-auto w-full overflow-hidden">
+        
+        <div id="welcome-screen" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-20 animate-saas">
+            <div class="inline-flex items-center px-3 py-1 bg-soft-aqua border border-aqua-soft rounded-full text-[10px] font-bold text-aqua-deep uppercase tracking-widest mb-6">
+                Coming Soon
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+                The New Standard of <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-[#00A3A3]">Strategic Intelligence.</span>
+            </h2>
+            <p class="text-slate-500 max-w-md text-sm leading-relaxed mb-8 font-medium">
+                Welcome to the WebProArts early access environment. Query our neural engine for upcoming launch details and strategic data.
+            </p>
+        </div>
+
+        <div id="chat-history" class="flex-1 overflow-y-auto px-6 py-12 space-y-10 hidden z-10">
+            </div>
+
+        <div class="p-8 bg-white border-t border-slate-50">
+            <div class="max-w-2xl mx-auto">
+                
+                <div id="quick-tags" class="flex flex-wrap justify-center gap-2 mb-6">
+                    <button onclick="quickAction('Analyze my Ads strategy')" class="text-[11px] font-bold text-slate-500 bg-slate-50 border border-slate-200 px-4 py-2 rounded-lg hover:border-[#00F5FF] hover:text-slate-900 transition-all">Ads Engine</button>
+                    <button onclick="quickAction('Launch roadmap')" class="text-[11px] font-bold text-slate-500 bg-slate-50 border border-slate-200 px-4 py-2 rounded-lg hover:border-[#00F5FF] hover:text-slate-900 transition-all">Roadmap</button>
+                    <button onclick="quickAction('Custom Django pricing')" class="text-[11px] font-bold text-slate-500 bg-slate-50 border border-slate-200 px-4 py-2 rounded-lg hover:border-[#00F5FF] hover:text-slate-900 transition-all">Pricing</button>
+                </div>
+
+                <div class="relative group saas-shadow rounded-2xl">
+                    <input type="text" id="userInput" 
+                        placeholder="Type your command..." 
+                        class="w-full bg-white border border-slate-200 rounded-2xl px-6 py-5 text-sm font-medium focus:outline-none focus:ring-4 focus:ring-[#00F5FF]/5 focus:border-[#00F5FF] transition-all placeholder:text-slate-300"
+                        onkeypress="if(event.key === 'Enter') sendToBot()">
+                    
+                    <button onclick="sendToBot()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-slate-900 text-white p-3 rounded-xl hover:bg-black transition-all shadow-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+                <div class="flex items-center justify-center space-x-3 mt-6">
+                    <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Enterprise Secured</span>
+                    <span class="text-[10px] text-slate-200">•</span>
+                    <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">WebProArts © 2026</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const chatHistory = document.getElementById('chat-history');
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const inputField = document.getElementById('userInput');
+        const quickTags = document.getElementById('quick-tags');
+
+        function quickAction(text) {
+            inputField.value = text;
+            sendToBot();
+        }
+
+        async function sendToBot() {
+            const message = inputField.value.strip ? inputField.value.strip() : inputField.value.trim();
+            if (!message) return;
+
+            welcomeScreen.style.display = 'none';
+            quickTags.classList.add('hidden');
+            chatHistory.classList.remove('hidden');
+            inputField.value = '';
+
+            appendMessage('user', message);
+            
+            const loadingId = 'loading-' + Date.now();
+            appendMessage('bot', '<span class="flex items-center space-x-2"><span class="w-1 h-1 bg-slate-400 rounded-full animate-bounce"></span><span class="w-1 h-1 bg-slate-400 rounded-full animate-bounce [animation-delay:0.2s]"></span><span class="w-1 h-1 bg-slate-400 rounded-full animate-bounce [animation-delay:0.4s]"></span></span>', loadingId);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+
+            try {
+                const response = await fetch('/chat-bot/', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-CSRFToken': '{{ csrf_token }}' 
+                    },
+                    body: `message=${encodeURIComponent(message)}`
+                });
+                const data = await response.json();
+                document.getElementById(loadingId).innerHTML = data.reply;
+            } catch (e) {
+                document.getElementById(loadingId).innerHTML = "The engine encountered a temporary sync error. Please retry.";
+            }
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+
+        function appendMessage(sender, text, id = null) {
+            const div = document.createElement('div');
+            div.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'} animate-saas`;
+            
+            const innerDiv = document.createElement('div');
+            innerDiv.className = sender === 'user' 
+                ? 'bg-[#00F5FF] text-slate-900 px-5 py-4 rounded-2xl rounded-tr-none max-w-[80%] font-semibold shadow-sm text-sm' 
+                : 'bg-white border border-slate-100 text-slate-600 px-6 py-5 rounded-2xl rounded-tl-none max-w-[85%] text-[14px] leading-relaxed saas-shadow';
+            
+            if(id) innerDiv.id = id;
+            innerDiv.innerHTML = text.replace(/\n/g, '<br>');
+            
+            div.appendChild(innerDiv);
+            chatHistory.appendChild(div);
+        }
+    </script>
+</body>
+</html>

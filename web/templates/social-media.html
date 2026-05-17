@@ -1,0 +1,949 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Social Media Marketing | Web Pro Arts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .bg-social { background-image: radial-gradient(#28b8d915 1px, transparent 1px); background-size: 35px 35px; }
+        .glow-blue { box-shadow: 0 0 50px -10px rgba(40, 184, 217, 0.3); }
+    </style>
+</head>
+<body class="bg-[#fafbfd] text-slate-900">
+
+<header class="w-full bg-white border-b border-slate-100 sticky top-0 z-[100]">
+    <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+        <a href="/" class="flex items-center">
+            <img src="{% static 'img/logo-webproarts.png' %}" alt="WebProArts" class="h-12 lg:h-16 w-auto object-contain">
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-10">
+            <div class="relative group">
+                <button class="flex items-center gap-2 text-[15px] font-bold text-slate-700 group-hover:text-[#28b8d9] transition-colors py-8 focus:outline-none">
+                    Services
+                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </button>
+                
+                <div class="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100]">
+                    <div class="bg-white border border-slate-100 shadow-2xl rounded-3xl w-[600px] p-6 grid grid-cols-2 gap-4 mt-2">
+                        <a href="{% url 'digital_marketing' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-12 h-12 object-contain" alt="Marketing">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Digital Marketing</p>
+                                <p class="text-[12px] text-slate-500">SEO & Ads Management</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'web_design' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-12 h-12 object-contain" alt="Web Design">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Website Design</p>
+                                <p class="text-[12px] text-slate-500">UI/UX & Development</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'social_media' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-12 h-12 object-contain" alt="Social Media">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Social Media</p>
+                                <p class="text-[12px] text-slate-500">Growth & Management</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'video_editing' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-12 h-12 object-contain" alt="Video Editing">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Video Editing</p>
+                                <p class="text-[12px] text-slate-500">Reels & Ads Production</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#work" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors">Case Studies</a>
+            <a href="{% url 'about' %}" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors">About Us</a>
+            
+            <a href="{% url 'blogs' %}" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors relative group/blog">
+                Blog
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#28b8d9] transition-all group-hover/blog:w-full"></span>
+            </a>
+
+            <a href="{% url 'contact.html' %}" class="bg-[#16598a] text-white px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-[#28b8d9] transition-all shadow-lg shadow-[#16598a]/10">Contact Now</a>
+        </nav>
+
+        <button class="lg:hidden p-2 text-[#16598a] hover:bg-slate-50 rounded-lg transition-colors" onclick="toggleMenu()" aria-label="Open Menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round"></path></svg>
+        </button>
+    </div>
+</header>
+
+<div id="sidebar-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[150] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+<div id="mobile-sidebar" class="fixed top-0 right-0 w-[85%] max-w-[360px] h-full bg-white z-[200] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    <div class="p-6 flex items-center justify-between border-b border-slate-50">
+        <img src="{% static 'img/logo-webproarts.png' %}" alt="Logo" class="h-10 w-auto">
+        <button onclick="toggleMenu()" class="p-2 text-slate-400 hover:text-red-500 transition-colors">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6">
+        <div class="space-y-8">
+            <div>
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Our Services</p>
+                <div class="grid gap-2">
+                    <a href="{% url 'digital_marketing' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Digital Marketing</span>
+                    </a>
+                    <a href="{% url 'web_design' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Website Design</span>
+                    </a>
+                    <a href="{% url 'social_media' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Social Media</span>
+                    </a>
+                    <a href="{% url 'video_editing' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Video Editing</span>
+                    </a>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <div class="space-y-4">
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Company</p>
+                <a href="#work" class="block px-3 font-bold text-slate-700 text-lg">Case Studies</a>
+                <a href="{% url 'about' %}" class="block px-3 font-bold text-slate-700 text-lg">About Us</a>
+                <a href="{% url 'blogs' %}" class="block px-3 font-bold text-slate-700 text-lg">Blog</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-6 border-t border-slate-50">
+        <a href="{% url 'contact.html' %}" class="block w-full text-center bg-[#16598a] text-white py-4 rounded-xl font-bold shadow-lg">Get Started Now</a>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        const sidebar = document.getElementById('mobile-sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const body = document.body;
+
+        if (sidebar.classList.contains('translate-x-full')) {
+            // Open Menu
+            sidebar.classList.remove('translate-x-full');
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            overlay.classList.add('opacity-100', 'pointer-events-auto');
+            body.style.overflow = 'hidden'; // Stop background scrolling
+        } else {
+            // Close Menu
+            sidebar.classList.add('translate-x-full');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            overlay.classList.remove('opacity-100', 'pointer-events-auto');
+            body.style.overflow = ''; // Restore scrolling
+        }
+    }
+</script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<section class="social-pro-hero">
+    <div class="social-hero-grid">
+        
+        <div class="social-content-side">
+            <div class="social-el-badge">
+                <span class="social-active-dot"></span> SOCIAL GROWTH ENGINES
+            </div>
+            <h1 class="social-main-title">Followers to <br><span class="social-glow-text">Customers.</span></h1>
+            <p class="social-paragraph">
+                We don't just chase likes. We engineer high-impact social funnels that drive 
+                real traffic, leads, and revenue. At <strong>WEBPROARTS</strong>, 
+                your social presence becomes a precision-tuned growth engine.
+            </p>
+            
+            <div class="social-stats-row">
+                <div class="stat-pill">
+                    <span class="stat-val">10x</span>
+                    <span class="stat-lab">REACH POTENTIAL</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-val">95%</span>
+                    <span class="stat-lab">RETENTION RATE</span>
+                </div>
+            </div>
+
+            <div class="social-cta-area">
+               <a href="{% url 'contact.html' %}"></a> <button class="social-primary-btn">Initialize Growth</button>
+                <div class="social-build-tag">
+                    <strong>2026</strong>
+                    <span>ALGORITHM READY</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-visual-side">
+            <div class="swiper socialProSwiper">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide">
+                        <div class="social-brand-card fb-theme">
+                            <div class="s-logo-container">
+                                <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.791-4.667 4.532-4.667 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            </div>
+                            <div class="s-brand-meta">
+                                <span class="s-label">COMMUNITY BUILDING</span>
+                                <div class="s-status">FACEBOOK ECOSYSTEM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="social-brand-card insta-theme">
+                            <div class="s-logo-container">
+                                <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </div>
+                            <div class="s-brand-meta">
+                                <span class="s-label">VISUAL DISCOVERY</span>
+                                <div class="s-status">INSTAGRAM ARCHITECTURE</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="social-brand-card linkedin-theme">
+                            <div class="s-logo-container">
+                                <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </div>
+                            <div class="s-brand-meta">
+                                <span class="s-label">B2B AUTHORITY</span>
+                                <div class="s-status">LINKEDIN LEAD GEN</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+/* Base Structure */
+.social-pro-hero {
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+}
+
+.social-hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 100%;
+    align-items: center;
+}
+
+/* Content Side */
+.social-content-side { padding-right: 60px; }
+
+.social-el-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #f4f7fa;
+    padding: 12px 25px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #16598a;
+    margin-bottom: 35px;
+}
+
+.social-active-dot { width: 8px; height: 8px; background: #28b8d9; border-radius: 50%; animation: pulse-social 2s infinite; }
+@keyframes pulse-social { 0% { opacity: 1; } 50% { opacity: 0.3; transform: scale(1.4); } 100% { opacity: 1; } }
+
+.social-main-title { font-size: 5.5rem; font-weight: 900; line-height: 1; color: #05161d; letter-spacing: -4px; margin-bottom: 35px; }
+.social-glow-text { color: #28b8d9; }
+.social-paragraph { font-size: 1.2rem; color: #555; line-height: 1.8; max-width: 600px; margin-bottom: 40px; }
+
+.social-stats-row { display: flex; gap: 40px; margin-bottom: 50px; border-left: 2px solid #eef2f6; padding-left: 30px; }
+.stat-pill { display: flex; flex-direction: column; }
+.stat-val { font-size: 2.5rem; font-weight: 900; color: #16598a; line-height: 1; }
+.stat-lab { font-size: 10px; font-weight: 800; color: #94a3b8; letter-spacing: 2px; margin-top: 8px; }
+
+.social-cta-area { display: flex; align-items: center; gap: 40px; }
+.social-primary-btn { background: #0d1b2a; color: #fff; padding: 22px 45px; border-radius: 100px; border: none; font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.4s; }
+.social-primary-btn:hover { background: #28b8d9; transform: translateY(-5px); }
+
+.social-build-tag { display: flex; flex-direction: column; line-height: 1; }
+.social-build-tag strong { font-size: 1.5rem; color: #000; font-weight: 900; }
+.social-build-tag span { font-size: 9px; font-weight: 800; color: #aaa; letter-spacing: 2px; }
+
+/* Visual Side Swiper */
+.socialProSwiper {
+    width: 360px;
+    height: 500px;
+}
+
+.social-brand-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+}
+
+.s-logo-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.s-logo-container svg {
+    width: 150px;
+    height: 150px;
+}
+
+.s-brand-meta { margin-top: 30px; }
+.s-label { font-size: 10px; font-weight: 900; letter-spacing: 5px; color: rgba(255,255,255,0.7); display: block; margin-bottom: 10px; }
+.s-status { font-size: 14px; font-weight: 800; color: #fff; text-transform: uppercase; }
+
+/* BRAND THEMES */
+.fb-theme { background: #1877F2; }
+.insta-theme { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+.linkedin-theme { background: #0077b5; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .social-hero-grid { grid-template-columns: 1fr; text-align: center; padding: 100px 20px; }
+    .social-content-side { padding-right: 0; margin-bottom: 60px; }
+    .social-stats-row { justify-content: center; border-left: none; padding-left: 0; }
+    .social-cta-area { flex-direction: column; }
+    .social-main-title { font-size: 3.5rem; }
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        new Swiper('.socialProSwiper', {
+            effect: 'cards',
+            grabCursor: true,
+            loop: true,
+            autoplay: { delay: 3500 },
+            perSlideOffset: 12,
+            perSlideRotate: 2,
+        });
+    });
+</script>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-black text-[#04131a] tracking-tight">Technical Social Framework</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <div class="flex flex-col md:flex-row gap-8 items-center bg-slate-50 p-8 rounded-[3rem] border border-slate-100 hover:border-[#28b8d9]/30 transition-all">
+                    <div class="w-full md:w-1/2 overflow-hidden rounded-3xl">
+                        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=800" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Organic Reach">
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h4 class="text-2xl font-bold mb-4">Organic Growth</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6">Building a community that cares. We manage daily engagement, hashtag research, and consistent storytelling to grow your brand without a dollar in ad spend.</p>
+                        <ul class="text-[11px] font-bold text-[#16598a] space-y-2 uppercase tracking-wider">
+                            <li><i class="fas fa-check-circle mr-2 text-[#28b8d9]"></i> Engagement Optimization</li>
+                            <li><i class="fas fa-check-circle mr-2 text-[#28b8d9]"></i> Hashtag Ecosystems</li>
+                            <li><i class="fas fa-check-circle mr-2 text-[#28b8d9]"></i> Brand Voice Scaling</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-8 items-center bg-slate-50 p-8 rounded-[3rem] border border-slate-100 hover:border-[#16598a]/30 transition-all">
+                    <div class="w-full md:w-1/2 overflow-hidden rounded-3xl">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Meta Ads">
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h4 class="text-2xl font-bold mb-4">Paid Performance</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6">Advanced Meta & LinkedIn ads. We build "Lookalike" audiences and remarketing funnels that follow potential leads until they convert into buyers.</p>
+                        <ul class="text-[11px] font-bold text-[#16598a] space-y-2 uppercase tracking-wider">
+                            <li><i class="fas fa-check-circle mr-2 text-[#28b8d9]"></i> Precision Targeting</li>
+                            <li><i class="fas fa-check-circle mr-2 text-[#28b8d9]"></i> Retargeting Funnels</li>
+                            <li><i class="fas fa-check-circle mr-2 text-[#28b8d9]"></i> ROI Dashboarding</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-8 items-center bg-slate-50 p-8 rounded-[3rem] border border-slate-100 hover:border-[#28b8d9]/30 transition-all">
+                    <div class="w-full md:w-1/2 overflow-hidden rounded-3xl">
+                        <img src="data:image/webp;base64,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" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Reels Production">
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h4 class="text-2xl font-bold mb-4">Viral Short-Form</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6">Reels, TikToks, and Shorts engineered for the algorithm. We combine cinematic editing with high-retention hooks to make your brand go viral.</p>
+                        <ul class="text-[11px] font-bold text-[#16598a] space-y-2 uppercase tracking-wider">
+                            <li><i class="fas fa-check-circle mr-2 text-[#28b8d9]"></i> Trend Identification</li>
+                            <li><i class="fas fa-check-circle mr-2 text-[#28b8d9]"></i> Cinematic Transitions</li>
+                            <li><i class="fas fa-check-circle mr-2 text-[#28b8d9]"></i> High-Retention Scripting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-8 items-center bg-slate-50 p-8 rounded-[3rem] border border-slate-100 hover:border-[#16598a]/30 transition-all">
+                    <div class="w-full md:w-1/2 overflow-hidden rounded-3xl">
+                        <img src="https://images.unsplash.com/photo-1590402494587-44b71d7772f6?q=80&w=800" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="LinkedIn Marketing">
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h4 class="text-2xl font-bold mb-4">LinkedIn B2B</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6">Establish yourself as an industry leader. We optimize executive profiles and build thought-leadership content that attracts high-ticket clients.</p>
+                        <ul class="text-[11px] font-bold text-[#16598a] space-y-2 uppercase tracking-wider">
+                            <li><i class="fas fa-check-circle mr-2 text-[#28b8d9]"></i> Profile Authority</li>
+                            <li><i class="fas fa-check-circle mr-2 text-[#28b8d9]"></i> Corporate Branding</li>
+                            <li><i class="fas fa-check-circle mr-2 text-[#28b8d9]"></i> Executive Storytelling</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+<section class="smm-spec-master-section">
+    <div class="master-container">
+        
+        <div class="master-sidebar">
+            <div class="sidebar-header">
+                <h2>Social Mastery</h2>
+                <p>Engineering digital influence and community growth.</p>
+            </div>
+            <div class="button-group">
+                <button class="smm-spec-btn active" onclick="updateSMMView('custom', event)">Customized Strategies</button>
+                <button class="smm-spec-btn" onclick="updateSMMView('platform', event)">Platform Expertise</button>
+                <button class="smm-spec-btn" onclick="updateSMMView('content', event)">Content Creation</button>
+                <button class="smm-spec-btn" onclick="updateSMMView('engage', event)">Audience Engagement</button>
+                <button class="smm-spec-btn" onclick="updateSMMView('data', event)">Data-Driven Approach</button>
+                <button class="smm-spec-btn" onclick="updateSMMView('paid', event)">Paid Advertising</button>
+            </div>
+        </div>
+
+        <div class="master-content" id="smm-spec-display">
+            <div class="content-header">
+                <h3 id="s-title">Customized Social Media Strategies</h3>
+                <div class="status-badge">Elite Strategy</div>
+            </div>
+            
+            <div class="content-body">
+                <div class="main-text">
+                    <h4>Philosophy & Brand DNA</h4>
+                    <p id="s-desc-main"></p>
+                    
+                    <h4>Strategic Roadmap & Implementation</h4>
+                    <p id="s-desc-strategy"></p>
+                </div>
+
+                <div class="feature-grid-wrapper">
+                    <h4>Core Specializations</h4>
+                    <ul id="s-features" class="feature-grid"></ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+/* Scoped Styles - Restored to Original Blue Palette */
+.smm-spec-master-section {
+    background-color: #f4f7f9;
+    padding: 80px 20px;
+    font-family: 'Inter', 'Poppins', sans-serif;
+}
+
+.smm-spec-master-section .master-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    min-height: 850px;
+}
+
+/* Sidebar Styling - Back to Midnight Blue */
+.smm-spec-master-section .master-sidebar {
+    flex: 0 0 320px;
+    background-color: #0d1b2a; 
+    padding: 40px 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.smm-spec-master-section .sidebar-header h2 {
+    font-size: 1.5rem;
+    color: #4cc9f0; /* Original Sky Blue */
+    margin-bottom: 10px;
+}
+
+.smm-spec-master-section .sidebar-header p {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+.smm-spec-btn {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    color: #cbd5e0;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.smm-spec-btn:hover { background: rgba(255,255,255,0.1); }
+
+/* Active State - Back to Blue */
+.smm-spec-btn.active {
+    background: #4cc9f0;
+    color: #0d1b2a;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(76, 201, 240, 0.3);
+}
+
+/* Content Area Styling */
+.smm-spec-master-section .master-content {
+    flex: 1;
+    padding: 50px;
+    overflow-y: auto;
+}
+
+.smm-spec-master-section .content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+#s-title {
+    font-size: 2.4rem;
+    color: #0d1b2a;
+    font-weight: 800;
+}
+
+.smm-spec-master-section .status-badge {
+    background: #e0f7fa;
+    color: #0077b6;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.smm-spec-master-section .main-text h4 {
+    color: #0077b6;
+    margin: 25px 0 10px 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.smm-spec-master-section .main-text p {
+    line-height: 1.9;
+    color: #4a5568;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+/* Feature Grid */
+.smm-spec-master-section .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.smm-spec-master-section .feature-grid li {
+    background: #f8fafc;
+    padding: 15px;
+    border-left: 4px solid #4cc9f0;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #2d3748;
+}
+
+@media (max-width: 992px) {
+    .smm-spec-master-section .master-container { flex-direction: column; }
+    .smm-spec-master-section .master-sidebar { flex: none; width: 100%; }
+}
+</style>
+
+<script>
+/* Data and Logic remain exact same to same as requested */
+const smmSpecData = {
+    custom: {
+        title: "Customized SMM Strategies",
+        main: "At WEBPROARTS, we recognize that a 'one-size-fits-all' approach is the antithesis of social success. Every digital ecosystem requires a unique blueprint that aligns with its core DNA. We move beyond basic demographics to understand the psychological profile of your ideal customer. For a luxury brand like ThinknShop, the strategy focuses on high-end visual storytelling; for a technical platform like BlogBeat, we pivot toward authority and deep information sharing.",
+        strategy: "Our strategic roadmap begins with an intensive brand immersion—distilling your unique value proposition into 'Content Pillars.' These pillars act as the North Star for all creation, ensuring that your brand never feels scattered or inconsistent. We execute a phased rollout: starting with 'Audience Immersion' to build a base, followed by 'Growth Injection' to expand reach, and finally 'Conversion Optimization' to turn that attention into tangible business revenue.",
+        features: ["Bespoke Brand Voice Mapping", "Competitive Market Conquest", "Content Pillar Architecture", "Conversion-Focused Roadmap"]
+    },
+    platform: {
+        title: "Platform Mastery & Expertise",
+        main: "Each social platform is a distinct digital country with its own culture, language, and 'unwritten rules.' WEBPROARTS provides mastery across the 'Big Four' (Meta, LinkedIn, YouTube, TikTok) by understanding these nuances. A post that performs well on LinkedIn's professional environment might fail completely on the visual-first world of Instagram.",
+        strategy: "We utilize 'Native-First Engineering.' We don't just cross-post the same image to five platforms; we adapt the asset to the specific psychology of the channel. For YouTube, we focus on long-form retention; for TikTok, we focus on 'The First 2 Seconds.' We stay ahead of the curve by constantly monitoring algorithm changes, ensuring your brand is always an early adopter, giving you a massive competitive edge.",
+        features: ["Algorithm Trend Monitoring", "B2B vs B2C Optimization", "Native Platform Adapting", "Account Health & SEO Audit"]
+    },
+    content: {
+        title: "High-Impact Content Creation",
+        main: "In a world of infinite scrolling, only the most visually stunning and intellectually stimulating content survives. Our creative team is obsessed with 'The Hook'—that first split second that stops a user from scrolling past your brand. We don't just produce 'posts'; we produce digital assets that represent the premium quality of your business.",
+        strategy: "Our content creation system is built on high-production standards. We transform complex technical data from projects like BlogBeat into snackable, viral-style Reels and carousels. We focus on a 'Value-First' approach, creating content that either educates, entertains, or inspires. By using professional-grade lighting and editing, we ensure your brand looks professional and high-end at every touchpoint.",
+        features: ["Viral Reels & TikTok Production", "Thumb-Stopping Graphic Art", "High-Conversion Ad Copywriting", "Dynamic Motion Graphics"]
+    },
+    engage: {
+        title: "Audience Engagement & Growth",
+        main: "Social media is meant to be a conversation, not a monologue. True brand growth happens in the comments section. We turn passive observers into active participants and brand advocates. By humanizing your brand through active engagement, we build immense trust that directly correlates to higher customer lifetime value.",
+        strategy: "We implement 'Proactive Community Management,' going beyond simple responses to actively sparking conversations. We use 'Social Listening' to track what is being said about your brand even when you aren't tagged. This reputation management ensures that your brand stays protected and that your community feels like they are part of an exclusive club.",
+        features: ["24/7 Community Orchestration", "Proactive Social Listening", "Reputation Defense Systems", "Influencer Seed Programs"]
+    },
+    data: {
+        title: "Data Intelligence & ROI",
+        main: "If you can't measure it, you can't improve it. WEBPROARTS removes the guesswork from social media by using a strictly analytical approach. We focus on the metrics that actually impact your revenue: Reach, Engagement Velocity, Click-Through Rate (CTR), and conversion attribution.",
+        strategy: "We provide monthly 'Intelligence Audits' that translate complex numbers into actionable business decisions. By identifying the 'winning' patterns in your content, we double down on high-performing topics and pivot away from low-interest areas. This lean approach ensures your marketing budget is spent where it yields the most result, maximizing every dollar.",
+        features: ["Monthly ROI Intelligence Audits", "Conversion Path Tracking", "A/B Testing Content Analytics", "Competitor Growth Benchmarking"]
+    },
+    paid: {
+        title: "Paid Social Advertising",
+        main: "Organic reach is your foundation; Paid Advertising is your fuel. We specialize in precision-targeted social ads that bypass the algorithm and land directly in front of motivated buyers. Our paid strategy is engineered to scale your business at a predictable Cost Per Acquisition (CPA).",
+        strategy: "We build 'Full-Funnel Ad Systems'—Awareness at the top, Consideration in the middle, and Retargeting at the bottom. By implementing Server-Side API tracking and Meta Pixels, we ensure every cent of your ad spend is accounted for. We optimize budgets in real-time, scaling winning creatives and killing underperforming ads instantly.",
+        features: ["Full-Funnel Pixel/API Tracking", "Dynamic Retargeting Loops", "High-ROAS Scaling Strategies", "Precision Audience Modeling"]
+    }
+};
+
+function updateSMMView(key, event) {
+    const display = document.getElementById('smm-spec-display');
+    display.style.opacity = 0;
+    display.style.transform = "translateY(10px)";
+
+    setTimeout(() => {
+        const data = smmSpecData[key];
+        document.getElementById('s-title').innerText = data.title;
+        document.getElementById('s-desc-main').innerHTML = data.main;
+        document.getElementById('s-desc-strategy').innerHTML = data.strategy;
+        
+        const list = document.getElementById('s-features');
+        list.innerHTML = ""; 
+        data.features.forEach(f => {
+            const li = document.createElement('li');
+            li.innerText = f;
+            list.appendChild(li);
+        });
+        
+        display.style.opacity = 1;
+        display.style.transform = "translateY(0)";
+    }, 250);
+
+    const buttons = document.querySelectorAll('.smm-spec-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    updateSMMView('custom', { currentTarget: document.querySelector('.smm-spec-btn') });
+});
+</script>
+
+
+
+
+
+<footer class="bg-[#000000] text-white pt-16 pb-8 border-t border-white/5 font-sans">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-16 items-start">
+            
+            <div class="flex flex-col items-center lg:items-start">
+                <div class="mb-6 flex justify-center lg:justify-start">
+                    <img src="{% static 'img/logo.jpeg' %}" 
+                         alt="Web Pro Arts Logo" 
+                         class="h-16 w-auto block object-contain">
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed max-w-xs text-center lg:text-left">
+                    By optimizing content and leveraging relevant keywords, we secure your brand's prominent position in the digital landscape.
+                </p>
+            </div>
+
+            <div class="border-t border-white/5 lg:border-none pt-6 lg:pt-0">
+                <div class="flex justify-between items-center lg:block cursor-pointer lg:cursor-default group" onclick="toggleFooterAcc(this)">
+                    <h4 class="text-xs font-black uppercase tracking-[0.2em] text-white mb-0 lg:mb-8">Services</h4>
+                    <span class="lg:hidden text-slate-500 transition-transform duration-300 icon-plus">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12" stroke-width="2"></path></svg>
+                    </span>
+                </div>
+                <ul class="hidden lg:block mt-6 lg:mt-0 space-y-4 text-sm text-slate-400 accordion-content text-center lg:text-left">
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'graphic_design' %}">Graphics Design</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'web_design' %}">Website Design</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'video_editing' %}">Video Editing</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'social_media' %}">Social Media Marketing</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'digital_marketing' %}">Digital Marketing</a></li>
+                </ul>
+            </div>
+
+            <div class="border-t border-white/5 lg:border-none pt-6 lg:pt-0">
+                <div class="flex justify-between items-center lg:block cursor-pointer lg:cursor-default group" onclick="toggleFooterAcc(this)">
+                    <h4 class="text-xs font-black uppercase tracking-[0.2em] text-white mb-0 lg:mb-8">Contact Us</h4>
+                    <span class="lg:hidden text-slate-500 transition-transform duration-300 icon-plus">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12" stroke-width="2"></path></svg>
+                    </span>
+                </div>
+                <div class="hidden lg:block mt-6 lg:mt-0 space-y-6 text-sm text-slate-400 accordion-content">
+                    <div class="flex flex-col lg:flex-row items-center lg:items-start gap-3 lg:gap-4 text-center lg:text-left">
+                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-[#28b8d9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <p class="leading-relaxed">Office no-2, Shastri Nagar, Vasai West,<br>Mumbai, India 401202</p>
+                    </div>
+
+                    <a href="mailto:webproarts@gmail.com" class="flex flex-col lg:flex-row items-center gap-3 lg:gap-4 group/link hover:text-white transition-colors text-center lg:text-left">
+                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 group-hover/link:bg-[#28b8d9]/10 transition-colors">
+                            <svg class="w-4 h-4 text-[#28b8d9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                        <span>webproarts@gmail.com</span>
+                    </a>
+
+                    <a href="tel:+919561635544" class="flex flex-col lg:flex-row items-center gap-3 lg:gap-4 group/link hover:text-white transition-colors text-center lg:text-left">
+                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 group-hover/link:bg-[#28b8d9]/10 transition-colors">
+                            <svg class="w-4 h-4 text-[#28b8d9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <span>+91 95616 35544</span>
+
+                    </a>
+                    
+                </div>
+            </div>
+
+
+            <div class="border-t border-white/5 lg:border-none pt-6 lg:pt-0 flex flex-col items-center lg:items-start">
+                <h4 class="text-xs font-black uppercase tracking-[0.2em] text-white mb-6">Subscribe Our Mail</h4>
+                
+                <div class="flex gap-4 mb-6">
+                    <a href="https://www.instagram.com/webproarts/" target="_blank" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] transition-all duration-300 group">
+                        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://linkedin.com/company/webproarts" target="_blank" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#0077b5] transition-all duration-300 group">
+                        <svg class="w-4 h-4 text-white fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+
+                <form class="relative w-full max-w-sm">
+                    <input type="email" placeholder="Your Email" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-[#28b8d9] transition-all text-white placeholder:text-slate-500">
+                    <button class="absolute right-2 top-2 bottom-2 bg-[#28b8d9] text-black font-black px-4 rounded-lg text-[10px] uppercase tracking-wider hover:bg-white transition-all">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="text-[10px] text-slate-500 mt-4 italic">Stay updated with our latest growth hacks.</p>
+            </div>
+        </div>
+
+        <div class="pt-10 mt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <p class="text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">
+                © 2020 <span class="text-white/80">Web Pro Arts</span>. All Rights Reserved.
+            </p>
+
+            <div class="flex gap-10 items-center">
+                <a href="{% url 'privacy_policy' %}" class="relative text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] hover:text-white transition-all group">
+                    Privacy Policy
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#28b8d9] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="{% url 'terms_of_service' %}" class="relative text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] hover:text-white transition-all group">
+                    Terms of Service
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#28b8d9] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+function toggleFooterAcc(el) {
+    if (window.innerWidth >= 1024) return;
+    const content = el.nextElementSibling;
+    const icon = el.querySelector('.icon-plus');
+    content.classList.toggle('hidden');
+    if (icon) {
+        icon.style.transform = !content.classList.contains('hidden') ? 'rotate(45deg)' : 'rotate(0deg)';
+    }
+}
+</script>
+
+
+
+
+
+
+<div id="circle-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[10000] invisible opacity-0 transition-all duration-500 flex items-center justify-center">
+    <div class="absolute inset-0" onclick="toggleCircleMenu()"></div>
+    
+    <div class="relative w-80 h-80 flex items-center justify-center">
+        <button onclick="toggleCircleMenu()" class="z-[10001] bg-black text-white p-5 rounded-full shadow-2xl active:scale-90 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+
+        <a href="{% url 'digital_marketing' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 0deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Digital</span>
+        </a>
+
+        <a href="{% url 'web_design' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 72deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Design</span>
+        </a>
+
+        <a href="{% url 'graphic_design' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 144deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Graphics</span>
+        </a>
+
+        <a href="{% url 'social_media' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 216deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Social</span>
+        </a>
+
+        <a href="{% url 'video_editing' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 288deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Video</span>
+        </a>
+    </div>
+</div>
+
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 z-[9999] h-[75px] pb-safe shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+    <div class="flex justify-around items-center h-full max-w-lg mx-auto">
+        
+        <a href="/" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Home</span>
+        </a>
+
+        <button onclick="toggleCircleMenu()" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 focus:outline-none active:opacity-60 transition-opacity">
+            <div class="relative">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <span class="absolute -top-1 -right-1 w-2 h-2 bg-black rounded-full"></span>
+            </div>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Services</span>
+        </button>
+
+        <a href="{% url 'career' %}" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Career</span>
+        </a>
+
+        <a href="{% url 'about' %}" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">About</span>
+        </a>
+
+
+            <a href="https://wa.me/919561635544" target="_blank" class="flex flex-col items-center justify-center flex-1 h-full text-green-600 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span class="text-[10px] font-black mt-1 uppercase tracking-tighter">Chat</span>
+        </a>
+
+        
+    </div>
+</nav>
+<style>
+    .service-node {
+        transition: all 0.5s ease;
+        pointer-events: none;
+    }
+    #circle-menu:not(.invisible) .service-node {
+        pointer-events: auto;
+    }
+</style>
+
+
+<script>
+    function toggleCircleMenu() {
+        const menu = document.getElementById('circle-menu');
+        const nodes = document.querySelectorAll('.service-node');
+        const isOpening = menu.classList.contains('invisible');
+
+        if (isOpening) {
+            menu.classList.remove('invisible', 'opacity-0');
+            document.body.style.overflow = 'hidden'; // Stop background scroll
+            
+            nodes.forEach((node, i) => {
+                const angle = node.style.getPropertyValue('--angle');
+                // Move out 120px from center
+                node.style.transform = `rotate(${angle}) translateY(-120px) rotate(-${angle})`;
+                node.style.opacity = '1';
+                node.style.transition = `all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) ${i * 0.05}s`;
+            });
+        } else {
+            nodes.forEach((node) => {
+                node.style.transform = `rotate(0deg) translateY(0px) rotate(0deg)`;
+                node.style.opacity = '0';
+                node.style.transition = 'all 0.3s ease-in';
+            });
+            
+            setTimeout(() => {
+                menu.classList.add('invisible', 'opacity-0');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

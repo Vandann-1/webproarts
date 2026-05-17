@@ -1,0 +1,1011 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Hub | Web Pro Arts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .bg-subtle-grid { 
+            background-image: radial-gradient(#28b8d915 1px, transparent 1px); 
+            background-size: 20px 20px; 
+        }
+        .img-mask { border-radius: 4rem 1rem 4rem 1rem; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+<header class="w-full bg-white border-b border-slate-100 sticky top-0 z-[100]">
+    <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+        <a href="/" class="flex items-center">
+            <img src="{% static 'img/logo-webproarts.png' %}" alt="WebProArts" class="h-12 lg:h-16 w-auto object-contain">
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-10">
+            <div class="relative group">
+                <button class="flex items-center gap-2 text-[15px] font-bold text-slate-700 group-hover:text-[#28b8d9] transition-colors py-8 focus:outline-none">
+                    Services
+                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </button>
+                
+                <div class="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100]">
+                    <div class="bg-white border border-slate-100 shadow-2xl rounded-3xl w-[600px] p-6 grid grid-cols-2 gap-4 mt-2">
+                        <a href="{% url 'digital_marketing' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-12 h-12 object-contain" alt="Marketing">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Digital Marketing</p>
+                                <p class="text-[12px] text-slate-500">SEO & Ads Management</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'web_design' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-12 h-12 object-contain" alt="Web Design">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Website Design</p>
+                                <p class="text-[12px] text-slate-500">UI/UX & Development</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'social_media' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-12 h-12 object-contain" alt="Social Media">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Social Media</p>
+                                <p class="text-[12px] text-slate-500">Growth & Management</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'video_editing' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-12 h-12 object-contain" alt="Video Editing">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Video Editing</p>
+                                <p class="text-[12px] text-slate-500">Reels & Ads Production</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#work" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors">Case Studies</a>
+            <a href="{% url 'about' %}" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors">About Us</a>
+            
+            <a href="{% url 'blogs' %}" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors relative group/blog">
+                Blog
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#28b8d9] transition-all group-hover/blog:w-full"></span>
+            </a>
+
+            <a href="{% url 'contact.html' %}" class="bg-[#16598a] text-white px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-[#28b8d9] transition-all shadow-lg shadow-[#16598a]/10">Contact Now</a>
+        </nav>
+
+        <button class="lg:hidden p-2 text-[#16598a] hover:bg-slate-50 rounded-lg transition-colors" onclick="toggleMenu()" aria-label="Open Menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round"></path></svg>
+        </button>
+    </div>
+</header>
+
+<div id="sidebar-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[150] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+<div id="mobile-sidebar" class="fixed top-0 right-0 w-[85%] max-w-[360px] h-full bg-white z-[200] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    <div class="p-6 flex items-center justify-between border-b border-slate-50">
+        <img src="{% static 'img/logo-webproarts.png' %}" alt="Logo" class="h-10 w-auto">
+        <button onclick="toggleMenu()" class="p-2 text-slate-400 hover:text-red-500 transition-colors">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6">
+        <div class="space-y-8">
+            <div>
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Our Services</p>
+                <div class="grid gap-2">
+                    <a href="{% url 'digital_marketing' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Digital Marketing</span>
+                    </a>
+                    <a href="{% url 'web_design' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Website Design</span>
+                    </a>
+                    <a href="{% url 'social_media' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Social Media</span>
+                    </a>
+                    <a href="{% url 'video_editing' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Video Editing</span>
+                    </a>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <div class="space-y-4">
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Company</p>
+                <a href="#work" class="block px-3 font-bold text-slate-700 text-lg">Case Studies</a>
+                <a href="{% url 'about' %}" class="block px-3 font-bold text-slate-700 text-lg">About Us</a>
+                <a href="{% url 'blogs' %}" class="block px-3 font-bold text-slate-700 text-lg">Blog</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-6 border-t border-slate-50">
+        <a href="{% url 'contact.html' %}" class="block w-full text-center bg-[#16598a] text-white py-4 rounded-xl font-bold shadow-lg">Get Started Now</a>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        const sidebar = document.getElementById('mobile-sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const body = document.body;
+
+        if (sidebar.classList.contains('translate-x-full')) {
+            // Open Menu
+            sidebar.classList.remove('translate-x-full');
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            overlay.classList.add('opacity-100', 'pointer-events-auto');
+            body.style.overflow = 'hidden'; // Stop background scrolling
+        } else {
+            // Close Menu
+            sidebar.classList.add('translate-x-full');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            overlay.classList.remove('opacity-100', 'pointer-events-auto');
+            body.style.overflow = ''; // Restore scrolling
+        }
+    }
+</script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<section class="video-fixed-hero">
+    <div class="video-grid">
+        
+        <div class="video-visual">
+            <div class="swiper videoOnlySwiper">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide">
+                        <div class="v-mega-card premiere-brand">
+                            <div class="v-mega-logo-box">
+                                <svg viewBox="0 0 24 24" fill="#EA77FF" xmlns="http://www.w3.org/2000/svg"><path d="M0 0v24h24V0H0zm14.85 18H9.15v-1.102h1.837V7.102H9.15V6h5.7c2.25 0 3.75 1.25 3.75 3.125 0 1.5-.975 2.55-2.4 2.925 1.575.3 2.7 1.425 2.7 3.225 0 1.725-1.125 2.725-3.3 2.725h-.75v-.102zm.675-6.675c.9 0 1.5-.525 1.5-1.35s-.6-1.35-1.5-1.35h-.9v2.7h.9zm.225 3.525c1.05 0 1.725-.6 1.725-1.5s-.675-1.5-1.725-1.5h-1.125v3h1.125z"/></svg>
+                            </div>
+                            <div class="v-mega-card-info">
+                                <span class="v-mega-label">TIMELINE ARCHITECTURE</span>
+                                <div class="v-mega-status">PREMIERE PRO MASTERED</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="v-mega-card ae-brand">
+                            <div class="v-mega-logo-box">
+                                <svg viewBox="0 0 24 24" fill="#D191FF" xmlns="http://www.w3.org/2000/svg"><path d="M0 0v24h24V0H0zm14.85 18H9.15v-1.1h1.837V7.1h-1.837V6h5.7c2.25 0 3.75 1.25 3.75 3.125 0 1.5-.975 2.55-2.4 2.925 1.575.3 2.7 1.425 2.7 3.225 0 1.725-1.125 2.725-3.3 2.725h-.75v-.1z"/></svg>
+                            </div>
+                            <div class="v-mega-card-info">
+                                <span class="v-mega-label">MOTION DYNAMICS</span>
+                                <div class="v-mega-status">VFX & COMPOSITING</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="v-mega-card resolve-brand">
+                            <div class="v-mega-logo-box">
+                                <svg viewBox="0 0 24 24" fill="#4cc9f0" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18.25c-3.452 0-6.25-2.798-6.25-6.25S8.548 5.75 12 5.75s6.25 2.798 6.25 6.25-2.798 6.25-6.25 6.25z"/></svg>
+                            </div>
+                            <div class="v-mega-card-info">
+                                <span class="v-mega-label">COLOR SCIENCE</span>
+                                <div class="v-mega-status">CINEMATIC GRADING</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="video-text">
+            <div class="video-badge">
+                <span class="v-pulse"></span> CINEMATIC PRODUCTION HUB
+            </div>
+            <h1 class="v-title">Visual Story <br><span class="v-highlight">Engineered.</span></h1>
+            <p class="v-desc">
+                We believe in informed decisions. Below is the breakdown of how 
+                <strong>WEBPROARTS</strong> utilizes industry-standard technology to build, 
+                scale, and deliver cinematic success.
+            </p>
+            <div class="v-action-row">
+                <a href="{% url 'contact.html' %}"><button class="v-btn-main">Start My Production</button></a>
+                <div class="v-version">
+                    <strong>8K RAW</strong>
+                    <span>STUDIO READY</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+/* Section Base */
+.video-fixed-hero {
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+    width: 100%;
+    align-items: center;
+}
+
+/* Swiper Sizing */
+.videoOnlySwiper {
+    width: 360px;
+    height: 500px;
+}
+
+.v-mega-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+}
+
+/* BIG LOGO SVG BOX */
+.v-mega-logo-box {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.v-mega-logo-box svg {
+    width: 150px; /* MASSIVE STUDIO LOGO */
+    height: 150px;
+}
+
+.v-mega-card-info { margin-top: 30px; }
+.v-mega-label { font-size: 10px; font-weight: 900; letter-spacing: 5px; color: rgba(255,255,255,0.7); display: block; margin-bottom: 10px; }
+.v-mega-status { font-size: 13px; font-weight: 800; color: #fff; text-transform: uppercase; }
+
+/* STUDIO BRAND COLORS */
+.premiere-brand { background: #00005B; }
+.ae-brand { background: #00005B; border: 1px solid #D191FF; }
+.resolve-brand { background: linear-gradient(135deg, #0d1b2a 0%, #001d3d 100%); }
+
+/* Right Side Text (Traditional WEBPROARTS Style) */
+.video-text { padding-left: 80px; }
+
+.video-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #f4f7fa;
+    padding: 12px 25px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #16598a;
+    margin-bottom: 30px;
+}
+
+.v-pulse { width: 8px; height: 8px; background: #28b8d9; border-radius: 50%; animation: vp 2s infinite; }
+@keyframes vp { 0% { opacity: 1; } 50% { opacity: 0.3; transform: scale(1.4); } 100% { opacity: 1; } }
+
+.v-title { font-size: 5.5rem; font-weight: 900; line-height: 1; color: #05161d; letter-spacing: -4px; margin-bottom: 35px; }
+.v-highlight { color: #28b8d9; }
+.v-desc { font-size: 1.2rem; color: #666; line-height: 1.8; max-width: 500px; margin-bottom: 50px; }
+
+/* Buttons */
+.v-action-row { display: flex; align-items: center; gap: 40px; }
+.v-btn-main { background: #000; color: #fff; padding: 22px 45px; border-radius: 100px; border: none; font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.3s; }
+.v-btn-main:hover { background: #28b8d9; transform: translateY(-5px); }
+
+.v-version { display: flex; flex-direction: column; line-height: 1; }
+.v-version strong { font-size: 1.5rem; color: #000; font-weight: 900; }
+.v-version span { font-size: 9px; font-weight: 800; color: #aaa; letter-spacing: 2px; }
+
+/* Mobile */
+@media (max-width: 1100px) {
+    .video-grid { grid-template-columns: 1fr; text-align: center; }
+    .video-text { padding-left: 0; margin-top: 60px; }
+    .videoOnlySwiper { margin: 0 auto; width: 300px; height: 420px; }
+    .v-action-row { flex-direction: column; }
+    .v-title { font-size: 3.5rem; }
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        new Swiper('.videoOnlySwiper', {
+            effect: 'cards',
+            grabCursor: true,
+            loop: true,
+            autoplay: { delay: 3000 },
+            perSlideOffset: 12,
+            perSlideRotate: 3,
+        });
+    });
+</script>
+
+    <section id="details" class="py-24 space-y-32">
+        
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1">
+                <div class="w-12 h-12 bg-[#28b8d9]/10 rounded-2xl flex items-center justify-center text-[#16598a] mb-6">
+                    <i class="fas fa-brain text-xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-black text-[#04131a] mb-6 tracking-tight">Phase 01: Deep Strategy & Research</h2>
+                <p class="text-slate-600 text-lg leading-relaxed mb-8">Before a single pixel is moved or a line of code is written, we dive deep into your market. We identify your competitors' weaknesses and find the "Growth Gaps" that will give your brand an unfair advantage.</p>
+                <ul class="space-y-4 text-slate-500 font-bold text-sm">
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-[#28b8d9]"></i> Competitor Architecture Analysis</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-[#28b8d9]"></i> High-Intent Keyword Mapping</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-[#28b8d9]"></i> Conversion Funnel Optimization</li>
+                </ul>
+            </div>
+            <div class="order-1 lg:order-2">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800" class="w-full h-[500px] object-cover img-mask shadow-2xl" alt="Strategy">
+            </div>
+        </div>
+
+        <div class="bg-slate-50 py-24">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800" class="w-full h-[500px] object-cover img-mask shadow-2xl" alt="Development">
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-[#16598a]/10 rounded-2xl flex items-center justify-center text-[#16598a] mb-6">
+                        <i class="fas fa-code text-xl"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-black text-[#04131a] mb-6 tracking-tight">Phase 02: Technical Craftsmanship</h2>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-8">Our development team builds high-performance, responsive assets using modern tech stacks. Whether it's a website or a cinematic video ad, the quality is ultra-sharp and optimized for every device.</p>
+                    <ul class="space-y-4 text-slate-500 font-bold text-sm">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-[#16598a]"></i> Pixel-Perfect Responsive UI</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-[#16598a]"></i> 4K Cinematic Color Grading</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-[#16598a]"></i> Lightning Fast Loading Speeds</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <div class="w-12 h-12 bg-[#28b8d9]/10 rounded-2xl flex items-center justify-center text-[#16598a] mb-6">
+                    <i class="fas fa-rocket text-xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-black text-[#04131a] mb-6 tracking-tight">Phase 03: Scaling & Growth</h2>
+                <p class="text-slate-600 text-lg leading-relaxed mb-8">Launch is just the beginning. We use data-driven Google Ads and aggressive Social Media campaigns to scale your brand reach, ensuring a consistent return on investment.</p>
+                <div class="grid grid-cols-2 gap-6 pt-4">
+                    <div class="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm">
+                        <p class="text-2xl font-black text-[#16598a]">100%</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Growth Focused</p>
+                    </div>
+                    <div class="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm">
+                        <p class="text-2xl font-black text-[#28b8d9]">24/7</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Analytics Tracking</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800" class="w-full h-[500px] object-cover img-mask shadow-2xl" alt="Growth">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- <section id="video-production" class="py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#28b8d9]/10 border border-[#28b8d9]/20 text-[#16598a] text-[10px] font-black uppercase tracking-[0.3em] mb-6">
+                    Motion Graphics & Editing
+                </div>
+                <h2 class="text-4xl md:text-6xl font-extrabold text-[#04131a] tracking-tighter leading-tight">
+                    Cinematic stories that <br><span class="text-[#28b8d9]">stop the scroll.</span>
+                </h2>
+            </div>
+            <div class="pb-2">
+                <p class="text-slate-500 text-sm md:text-base max-w-xs leading-relaxed">
+                    From raw 4K footage to viral social assets, we engineer every frame for maximum engagement.
+                </p>
+            </div>
+        </div>
+
+        <div class="relative group">
+            <div class="absolute -top-20 -right-20 w-96 h-96 bg-[#28b8d9]/5 rounded-full blur-[100px] -z-10"></div>
+            
+            <div class="relative rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-2xl border-[12px] border-white bg-slate-100 aspect-video lg:h-[600px] w-full">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJndXBrbWtxZ3RybXNwa2V2Ym9oZmlkZnd0dnBqenJ6Znd0dnBqeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKSjPqcKUIXGCpW/giphy.gif" 
+                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                     alt="Web Pro Arts Video Editing">
+                
+                <div class="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/10 transition-all">
+                    <div class="w-20 h-20 md:w-28 md:h-28 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8 md:w-10 md:h-10 text-white fill-current" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-8 left-8 bg-white/90 backdrop-blur-md p-6 rounded-3xl shadow-xl hidden md:block border border-white/50">
+                    <div class="flex items-center gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Resolution</span>
+                            <span class="text-sm font-bold text-[#16598a]">4K ULTRA HD</span>
+                        </div>
+                        <div class="w-px h-8 bg-slate-200"></div>
+                        <div class="flex flex-col">
+                            <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Color Space</span>
+                            <span class="text-sm font-bold text-[#16598a]">DCI-P3</span>
+                        </div>
+                        <div class="w-px h-8 bg-slate-200"></div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
+                            <span class="text-[10px] font-black text-slate-900 uppercase">Live Edit</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute -top-6 -right-6 md:top-12 md:-right-12 bg-[#16598a] text-white p-8 rounded-[2.5rem] shadow-2xl hidden lg:block rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                <p class="text-[10px] font-black uppercase tracking-widest opacity-60 mb-2">Total Views</p>
+                <p class="text-3xl font-black text-[#28b8d9]">1.2M+</p>
+                <p class="text-[9px] font-bold mt-1 text-white/80">Generated for Clients</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
+            <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 flex flex-col items-center text-center hover:bg-[#28b8d9]/5 transition-colors group">
+                <i class="fas fa-magic text-[#16598a] mb-3 group-hover:scale-110 transition-transform"></i>
+                <span class="text-[10px] font-black text-slate-900 uppercase tracking-widest">Color Grading</span>
+            </div>
+            <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 flex flex-col items-center text-center hover:bg-[#28b8d9]/5 transition-colors group">
+                <i class="fas fa-waveform-lines text-[#16598a] mb-3 group-hover:scale-110 transition-transform"></i>
+                <span class="text-[10px] font-black text-slate-900 uppercase tracking-widest">Sound Design</span>
+            </div>
+            <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 flex flex-col items-center text-center hover:bg-[#28b8d9]/5 transition-colors group">
+                <i class="fas fa-layer-group text-[#16598a] mb-3 group-hover:scale-110 transition-transform"></i>
+                <span class="text-[10px] font-black text-slate-900 uppercase tracking-widest">VFX Effects</span>
+            </div>
+            <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 flex flex-col items-center text-center hover:bg-[#28b8d9]/5 transition-colors group">
+                <i class="fas fa-closed-captioning text-[#16598a] mb-3 group-hover:scale-110 transition-transform"></i>
+                <span class="text-[10px] font-black text-slate-900 uppercase tracking-widest">Dynamic Subs</span>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<section class="video-master-section">
+    <div class="master-container">
+        
+        <div class="master-sidebar">
+            <div class="sidebar-header">
+                <h2>Production Studio</h2>
+                <p>Visual storytelling through cinematic engineering.</p>
+            </div>
+            <div class="button-group">
+                <button class="video-master-btn active" onclick="updateVideoView('ani2d', event)">2D Animation Video</button>
+                <button class="video-master-btn" onclick="updateVideoView('promo', event)">Commercial & Explainer</button>
+                <button class="video-master-btn" onclick="updateVideoView('social', event)">Insta, Reels & YouTube</button>
+                <button class="video-master-btn" onclick="updateVideoView('wedding', event)">Wedding & Short Films</button>
+                <button class="video-master-btn" onclick="updateVideoView('logo', event)">Logo Animation & Intro</button>
+                <button class="video-master-btn" onclick="updateVideoView('music', event)">Invitation & Music Video</button>
+            </div>
+        </div>
+
+        <div class="master-content" id="video-master-display">
+            <div class="content-header">
+                <h3 id="v-title">2D Animation Video Production</h3>
+                <div class="status-badge">Cinematic Excellence</div>
+            </div>
+            
+            <div class="content-body">
+                <div class="main-text">
+                    <h4>I. Creative Philosophy</h4>
+                    <p id="v-desc-main"></p>
+                    
+                    <h4>II. Strategic Storyboarding</h4>
+                    <p id="v-desc-strategy"></p>
+
+                    <h4>III. Technical Post-Production</h4>
+                    <p id="v-desc-technical"></p>
+
+                    <h4>IV. Distribution & Future Ready</h4>
+                    <p id="v-desc-future"></p>
+                </div>
+
+                <div class="feature-grid-wrapper">
+                    <h4>V. Studio Deliverables</h4>
+                    <ul id="v-features" class="feature-grid"></ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+/* Scoped Styles - Professional Blue Palette */
+.video-master-section {
+    background-color: #f4f7f9;
+    padding: 80px 20px;
+    font-family: 'Inter', 'Poppins', sans-serif;
+}
+
+.video-master-section .master-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    min-height: 850px;
+}
+
+/* Sidebar - Midnight Blue */
+.video-master-section .master-sidebar {
+    flex: 0 0 320px;
+    background-color: #0d1b2a; 
+    padding: 40px 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-master-section .sidebar-header h2 {
+    font-size: 1.5rem;
+    color: #4cc9f0; /* Sky Blue */
+    margin-bottom: 10px;
+}
+
+.video-master-section .sidebar-header p {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+.video-master-btn {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    color: #cbd5e0;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.video-master-btn:hover { background: rgba(255,255,255,0.1); }
+
+.video-master-btn.active {
+    background: #4cc9f0;
+    color: #0d1b2a;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(76, 201, 240, 0.3);
+}
+
+/* Content Area */
+.video-master-section .master-content {
+    flex: 1;
+    padding: 50px;
+    overflow-y: auto;
+}
+
+.video-master-section .content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+#v-title {
+    font-size: 2.4rem;
+    color: #0d1b2a;
+    font-weight: 800;
+}
+
+.video-master-section .status-badge {
+    background: #e0f7fa;
+    color: #0077b6;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.video-master-section .main-text h4 {
+    color: #0077b6;
+    margin: 35px 0 12px 0;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-left: 4px solid #4cc9f0;
+    padding-left: 15px;
+}
+
+.video-master-section .main-text p {
+    line-height: 2;
+    color: #4a5568;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+.video-master-section .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.video-master-section .feature-grid li {
+    background: #f8fafc;
+    padding: 15px;
+    border-left: 4px solid #4cc9f0;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #2d3748;
+}
+
+@media (max-width: 992px) {
+    .video-master-section .master-container { flex-direction: column; }
+    .video-master-section .master-sidebar { flex: none; width: 100%; }
+}
+</style>
+
+<script>
+const videoMasterData = {
+    ani2d: {
+        title: "2D Animation Video Production",
+        main: "At WEBPROARTS, we view 2D animation as the ultimate bridge between complex data and human emotion. In a digital world where attention spans are shrinking, animation allows us to simplify sophisticated brand messages into visually engaging narratives. Whether you are launching a SaaS product like BlogBeat or explaining a retail concept for ThinknShop, 2D animation provides a limitless canvas where we can defy physics to illustrate your value proposition.",
+        strategy: "Our strategic workflow begins with 'The Narrative Core.' We don't move a single pixel until the script is perfected to hit your conversion goals. We then move to Storyboarding, where we map out the visual rhythm to ensure the viewer's eye is always exactly where we want it. We develop custom characters and color palettes that are mathematically aligned with your brand's existing identity, ensuring the animation feels like a native extension of your website.",
+        technical: "Technical execution at WEBPROARTS involves high-fidelity vector animation and advanced compositing. We utilize professional-grade software to ensure fluid motion and zero 'jitter.' Our sound engineers layer custom SFX and high-end voiceovers to create a multi-sensory experience. We provide 4K exports in multiple aspect ratios (16:9, 9:16, 1:1) to ensure your animation looks sharp on everything from a conference room projector to a mobile phone screen.",
+        future: "The future of 2D animation is 'Interactive Storytelling.' We are moving toward 'Branching Narratives' where the viewer can choose their path within the video. Our roadmap includes integrating AI-driven animation workflows that allow for rapid content iteration, ensuring your brand can respond to market trends with high-quality animated responses within hours rather than weeks. This agility ensures your brand stays ahead in the fast-paced social economy.",
+        features: ["Custom Character Engineering", "Storyboarding & Scripting", "Fluid Motion Graphics", "High-Fidelity SFX Layering", "Multi-Language Voiceovers", "4K Ultra-HD Rendering"]
+    },
+    promo: {
+        title: "Commercial & Explainer Videos",
+        main: "Commercial and Explainer videos are the heavy-hitters of the sales funnel. A high-quality explainer can increase conversion rates by up to 80%. At WEBPROARTS, we don't just 'explain'; we 'persuade.' We focus on the psychology of the buyer, identifying their pain points early and presenting your product as the hero of their story. We build authority for your brand through high-end cinematography and professional pacing.",
+        strategy: "Our 'Hook-Value-Action' strategy ensures maximum ROI. We capture attention in the first 5 seconds, deliver the core solution in the middle, and drive a clear, hard-hitting Call to Action (CTA) at the close. We analyze your target demographic to determine the perfect 'Tone of Voice'—whether it’s the corporate reliability needed for a law firm or the high-energy excitement needed for a new product launch on ThinknShop.",
+        technical: "We utilize premium stock footage libraries and high-end typography to create a polished, expensive look without the traditional film-studio cost. Our post-production pipeline includes surgical-level color grading and dynamic text overlays that reinforce your key selling points. We implement 'Visual Anchoring'—ensuring that your brand logo and primary CTA are reinforced throughout the video so the viewer never forgets who provided the solution.",
+        future: "The future is 'Personalized Commercials.' We are developing systems where video content can be dynamically altered to include the viewer's name or specific industry data. Our roadmap also includes 'Shoppable Explainer Videos'—where users can click on items within the video to purchase them immediately on ThinknShop. By removing the distance between the 'view' and the 'sale,' we maximize your marketing efficiency.",
+        features: ["Sales-Psychology Scripts", "High-End Typography", "Premium Stock Integration", "Cinematic Color Grading", "Dynamic Text Overlays", "Action-Oriented CTAs"]
+    },
+    social: {
+        title: "Insta, Reels & YouTube Content",
+        main: "Social media video is a battle for the thumb. If you don't stop the scroll in the first 1.5 seconds, you've lost the customer. WEBPROARTS specializes in 'High-Retention Content' optimized for the unique algorithms of Instagram, TikTok, and YouTube. We understand the 'Language of Social'—the fast cuts, trending audio, and bold captions that signal to the algorithm that your content is worth promoting to thousands.",
+        strategy: "Our strategy is 'Pattern Interruption.' We use visual and auditory hooks that break the user's subconscious scrolling habit. For YouTube, we focus on the 'Thumbnail-Title-First 30 Seconds' loop to ensure your click-through rates and watch-time are in the top 1% of your niche. We help brands like BlogBeat turn long-form knowledge into snackable, viral vertical videos that drive traffic back to their core platform.",
+        technical: "We edit specifically for 9:16 vertical mobile viewing, ensuring all 'Safe Zones' are respected so your captions aren't hidden by the app UI. We utilize dynamic auto-captions with high-impact styling, which is critical since 80% of social users watch with sound off. Our audio engineers mix trending sounds with clear narration to ensure your content is 'Audio-Optimized' for the TikTok and Reel algorithms.",
+        future: "We are moving into 'Real-Time Content Feeds.' Our roadmap includes building custom AI editing presets for your brand, allowing for the creation of high-quality Reels in minutes. We are also exploring 'Social Search SEO' for video—optimizing your captions and audio metadata so your videos appear at the top when users search for topics on Instagram or YouTube, bypassing the traditional feed entirely.",
+        features: ["Vertical 9:16 Optimization", "High-Retention Fast Cuts", "Dynamic Auto-Captions", "Trending Audio Integration", "Social SEO Metadata", "Cross-Platform Formatting"]
+    },
+    wedding: {
+        title: "Wedding & Short Films",
+        main: "At WEBPROARTS, we treat every wedding and short film as a cinematic legacy. Capturing a once-in-a-lifetime event requires more than just a camera; it requires a 'Director’s Eye' for emotion and detail. We don't just record events; we weave a narrative that captures the soul of the moment. We focus on the 'In-Between Moments'—the laughter, the tears, and the subtle glances that tell the real story of the day.",
+        strategy: "Our 'Cinematic Storytelling' strategy moves away from the traditional 'chronological edit.' Instead, we build the film around the emotional high-points, using audio from vows or speeches as the 'Narrative Glue.' This creates a deep emotional impact that makes you feel the day all over again. We work closely with our clients to understand their aesthetic—whether they want a classic vintage look or a modern high-fashion film style.",
+        technical: "We utilize multi-camera setups and 4K sensors to ensure every angle is covered in stunning detail. Our post-production involves professional 'Film-Emulation' color grading and 'Spatial Audio' design. We meticulously sync every cut to the beat of a custom-licensed soundtrack. We provide 'Highlight Trailers' for social media alongside full-length cinematic edits, ensuring you have the perfect format for both public sharing and private viewing.",
+        future: "The future is 'Immersive Memories.' We are exploring 360-degree 'VR Wedding Experiences' that allow you to stand back in the middle of your ceremony years later. Our roadmap also includes 'AI-Facial Recognition Tagging' for long-form event videos, allowing you to instantly find every shot that features a specific family member. We are making your memories smarter and more accessible than ever before.",
+        features: ["Cinematic Narrative Edits", "Professional Color Grading", "Multi-Cam Syncing", "Drone Aerial Cinematography", "Licensed Soundtrack Curation", "4K Ultra-HD Master File"]
+    },
+    logo: {
+        title: "Logo Animation & Intro Branding",
+        main: "Your logo is the heartbeat of your brand, and motion is its pulse. A static logo is a sign; an animated logo is an experience. WEBPROARTS provides fluid, high-end logo animations that build a professional first impression in the critical first 5 seconds of a video. We inject personality into your branding, showing your audience that you are a modern, high-tech, and detail-oriented business from the very first frame.",
+        strategy: "Our motion strategy focuses on 'Brand Energy.' If you are a high-speed tech company, we use sharp, energetic movements; if you are a luxury boutique, we use slow, graceful reveals. We ensure that the animation reflects the 'Story' of the logo—revealing the hidden meanings in your iconography through motion. These assets become a recurring 'Brand Signal' that builds massive recognition over time across YouTube, Social, and Presentations.",
+        technical: "We provide 'Transparent Master Files' (ProRes 4444 or Lottie), allowing you to overlay your logo on any background without a black box. Our designers include custom 'Motion SFX' (sound effects) that give your brand a unique 'Audio Signature.' This is the same principle used by giants like Netflix or Intel—where the sound is just as recognizable as the visual. We ensure the files are optimized for fast loading on websites and high-res playback in 4K.",
+        future: "We are moving toward 'Interactive Motion Branding.' Our roadmap includes 'SVG Logo Animations' that respond to a user’s mouse movement on your website. We are also creating 'Dynamic Intros' that change their color or background based on the specific video they are introducing. This level of technical sophistication ensures your WEBPROARTS branding system is always at the cutting edge of digital design.",
+        features: ["Fluid Motion Design", "Transparent File Formats", "Custom Audio Branding", "4K High-Res Playback", "Presentation & Web Optimized", "VFX Reveal Transitions"]
+    },
+    music: {
+        title: "Invitation & Music Video Production",
+        main: "Creative videos require the highest level of artistic VFX. Whether it's a high-energy music video or a high-end digital invitation, WEBPROARTS focuses on 'Visual Rhythm.' We treat every frame as a piece of art, using stylized color and advanced effects to elevate the audio experience. For music videos, we create a visual companion that enhances the artist's message; for invitations, we create an 'Event Premiere' that builds massive anticipation.",
+        strategy: "Our strategy is 'Rhythmic Editing.' We sync every cut, transition, and effect to the BPM (Beats Per Minute) of the track. This creates a hypnotic viewing experience that feels 'locked-in' to the music. For digital invitations, we use 'Interactive Typography' that moves with the energy of the event, ensuring your guests feel the importance of the occasion before they even read the details. We focus on 'The Vibe' as the primary goal.",
+        technical: "We utilize advanced VFX suites for green-screen compositing, 3D environment building, and particle effects. Our post-production includes 'Stylized Grading'—creating unique looks like 'Cyberpunk,' 'Vintage Film,' or 'Dreamy Glow.' We handle the full technical export for VEVO, YouTube, and Apple Music, ensuring your video meets the strict technical standards of global streaming platforms while looking like a million-dollar production.",
+        future: "The future is 'AI-Augmented Visuals.' We are integrating AI generative art into our music video workflows to create surreal, impossible environments that would be too expensive to build traditionally. Our roadmap also includes 'AR Invitations'—where guests scan a physical card to see a 3D video invitation pop up on their phone. We are turning static moments into interactive, high-tech premieres.",
+        features: ["Beat-Synced Rhythmic Edits", "Advanced VFX & Compositing", "Stylized Artistic Grading", "Interactive Typography", "Streaming Platform Ready", "Digital Premiere Specialist"]
+    }
+};
+
+function updateVideoView(key, event) {
+    const display = document.getElementById('video-master-display');
+    display.style.opacity = 0;
+    display.style.transform = "translateY(10px)";
+
+    setTimeout(() => {
+        const data = videoMasterData[key];
+        document.getElementById('v-title').innerText = data.title;
+        document.getElementById('v-desc-main').innerHTML = data.main;
+        document.getElementById('v-desc-strategy').innerHTML = data.strategy;
+        document.getElementById('v-desc-technical').innerHTML = data.technical;
+        document.getElementById('v-desc-future').innerHTML = data.future;
+        
+        const list = document.getElementById('v-features');
+        list.innerHTML = ""; 
+        data.features.forEach(f => {
+            const li = document.createElement('li');
+            li.innerText = f;
+            list.appendChild(li);
+        });
+        
+        display.style.opacity = 1;
+        display.style.transform = "translateY(0)";
+    }, 250);
+
+    const buttons = document.querySelectorAll('.video-master-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+}
+
+// Initial Call
+window.addEventListener('DOMContentLoaded', () => {
+    updateVideoView('ani2d', { currentTarget: document.querySelector('.video-master-btn') });
+});
+</script>
+
+<footer class="bg-[#000000] text-white pt-16 pb-8 border-t border-white/5 font-sans">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-16 items-start">
+            
+            <div class="flex flex-col items-center lg:items-start">
+                <div class="mb-6 flex justify-center lg:justify-start">
+                    <img src="{% static 'img/logo.jpeg' %}" 
+                         alt="Web Pro Arts Logo" 
+                         class="h-16 w-auto block object-contain">
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed max-w-xs text-center lg:text-left">
+                    By optimizing content and leveraging relevant keywords, we secure your brand's prominent position in the digital landscape.
+                </p>
+            </div>
+
+            <div class="border-t border-white/5 lg:border-none pt-6 lg:pt-0">
+                <div class="flex justify-between items-center lg:block cursor-pointer lg:cursor-default group" onclick="toggleFooterAcc(this)">
+                    <h4 class="text-xs font-black uppercase tracking-[0.2em] text-white mb-0 lg:mb-8">Services</h4>
+                    <span class="lg:hidden text-slate-500 transition-transform duration-300 icon-plus">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12" stroke-width="2"></path></svg>
+                    </span>
+                </div>
+                <ul class="hidden lg:block mt-6 lg:mt-0 space-y-4 text-sm text-slate-400 accordion-content text-center lg:text-left">
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="#">Graphics Design</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="#">Website Design</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="#">Video Editing</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="#">Social Media Marketing</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="#">Digital Marketing</a></li>
+                </ul>
+            </div>
+
+            <div class="border-t border-white/5 lg:border-none pt-6 lg:pt-0">
+                <div class="flex justify-between items-center lg:block cursor-pointer lg:cursor-default group" onclick="toggleFooterAcc(this)">
+                    <h4 class="text-xs font-black uppercase tracking-[0.2em] text-white mb-0 lg:mb-8">Contact Us</h4>
+                    <span class="lg:hidden text-slate-500 transition-transform duration-300 icon-plus">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12" stroke-width="2"></path></svg>
+                    </span>
+                </div>
+                <div class="hidden lg:block mt-6 lg:mt-0 space-y-6 text-sm text-slate-400 accordion-content">
+                    <div class="flex flex-col lg:flex-row items-center lg:items-start gap-3 lg:gap-4 text-center lg:text-left">
+                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-[#28b8d9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <p class="leading-relaxed">Office no-2, Shastri Nagar, Vasai West,<br>Mumbai, India 401202</p>
+                    </div>
+
+                    <a href="mailto:webproarts@gmail.com" class="flex flex-col lg:flex-row items-center gap-3 lg:gap-4 group/link hover:text-white transition-colors text-center lg:text-left">
+                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 group-hover/link:bg-[#28b8d9]/10 transition-colors">
+                            <svg class="w-4 h-4 text-[#28b8d9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                        <span>webproarts@gmail.com</span>
+                    </a>
+
+                    <a href="tel:+919561635544" class="flex flex-col lg:flex-row items-center gap-3 lg:gap-4 group/link hover:text-white transition-colors text-center lg:text-left">
+                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 group-hover/link:bg-[#28b8d9]/10 transition-colors">
+                            <svg class="w-4 h-4 text-[#28b8d9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <span>+91 95616 35544</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 lg:border-none pt-6 lg:pt-0 flex flex-col items-center lg:items-start">
+                <h4 class="text-xs font-black uppercase tracking-[0.2em] text-white mb-6">Subscribe Our Mail</h4>
+                
+                <div class="flex gap-4 mb-6">
+                    <a href="https://www.instagram.com/webproarts/" target="_blank" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] transition-all duration-300 group">
+                        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://linkedin.com/company/webproarts" target="_blank" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#0077b5] transition-all duration-300 group">
+                        <svg class="w-4 h-4 text-white fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+
+                <form class="relative w-full max-w-sm">
+                    <input type="email" placeholder="Your Email" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-[#28b8d9] transition-all text-white placeholder:text-slate-500">
+                    <button class="absolute right-2 top-2 bottom-2 bg-[#28b8d9] text-black font-black px-4 rounded-lg text-[10px] uppercase tracking-wider hover:bg-white transition-all">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="text-[10px] text-slate-500 mt-4 italic">Stay updated with our latest growth hacks.</p>
+            </div>
+        </div>
+
+        <div class="pt-10 mt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <p class="text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">
+                © 2020 <span class="text-white/80">Web Pro Arts</span>. All Rights Reserved.
+            </p>
+
+            <div class="flex gap-10 items-center">
+                <a href="{% url 'privacy_policy' %}" class="relative text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] hover:text-white transition-all group">
+                    Privacy Policy
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#28b8d9] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="{% url 'terms_of_service' %}" class="relative text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] hover:text-white transition-all group">
+                    Terms of Service
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#28b8d9] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+function toggleFooterAcc(el) {
+    if (window.innerWidth >= 1024) return;
+    const content = el.nextElementSibling;
+    const icon = el.querySelector('.icon-plus');
+    content.classList.toggle('hidden');
+    if (icon) {
+        icon.style.transform = !content.classList.contains('hidden') ? 'rotate(45deg)' : 'rotate(0deg)';
+    }
+}
+</script>
+
+
+
+<div id="circle-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[10000] invisible opacity-0 transition-all duration-500 flex items-center justify-center">
+    <div class="absolute inset-0" onclick="toggleCircleMenu()"></div>
+    
+    <div class="relative w-80 h-80 flex items-center justify-center">
+        <button onclick="toggleCircleMenu()" class="z-[10001] bg-black text-white p-5 rounded-full shadow-2xl active:scale-90 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+
+        <a href="{% url 'digital_marketing' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 0deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Digital</span>
+        </a>
+
+        <a href="{% url 'web_design' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 72deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Design</span>
+        </a>
+
+        <a href="{% url 'graphic_design' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 144deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Graphics</span>
+        </a>
+
+        <a href="{% url 'social_media' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 216deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Social</span>
+        </a>
+
+        <a href="{% url 'video_editing' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 288deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Video</span>
+        </a>
+    </div>
+</div>
+
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 z-[9999] h-[75px] pb-safe shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+    <div class="flex justify-around items-center h-full max-w-lg mx-auto">
+        
+        <a href="/" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Home</span>
+        </a>
+
+        <button onclick="toggleCircleMenu()" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 focus:outline-none active:opacity-60 transition-opacity">
+            <div class="relative">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <span class="absolute -top-1 -right-1 w-2 h-2 bg-black rounded-full"></span>
+            </div>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Services</span>
+        </button>
+
+        <a href="{% url 'career' %}" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Career</span>
+        </a>
+
+        <a href="{% url 'about' %}" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">About</span>
+        </a>
+
+
+            <a href="https://wa.me/919561635544" target="_blank" class="flex flex-col items-center justify-center flex-1 h-full text-green-600 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span class="text-[10px] font-black mt-1 uppercase tracking-tighter">Chat</span>
+        </a>
+
+        
+    </div>
+</nav>
+<style>
+    .service-node {
+        transition: all 0.5s ease;
+        pointer-events: none;
+    }
+    #circle-menu:not(.invisible) .service-node {
+        pointer-events: auto;
+    }
+</style>
+
+
+<script>
+    function toggleCircleMenu() {
+        const menu = document.getElementById('circle-menu');
+        const nodes = document.querySelectorAll('.service-node');
+        const isOpening = menu.classList.contains('invisible');
+
+        if (isOpening) {
+            menu.classList.remove('invisible', 'opacity-0');
+            document.body.style.overflow = 'hidden'; // Stop background scroll
+            
+            nodes.forEach((node, i) => {
+                const angle = node.style.getPropertyValue('--angle');
+                // Move out 120px from center
+                node.style.transform = `rotate(${angle}) translateY(-120px) rotate(-${angle})`;
+                node.style.opacity = '1';
+                node.style.transition = `all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) ${i * 0.05}s`;
+            });
+        } else {
+            nodes.forEach((node) => {
+                node.style.transform = `rotate(0deg) translateY(0px) rotate(0deg)`;
+                node.style.opacity = '0';
+                node.style.transition = 'all 0.3s ease-in';
+            });
+            
+            setTimeout(() => {
+                menu.classList.add('invisible', 'opacity-0');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+    }
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

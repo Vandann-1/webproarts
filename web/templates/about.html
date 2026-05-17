@@ -1,0 +1,595 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | WebPro Arts Digital Agency</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        .animate-float { animation: float 5s ease-in-out infinite; }
+        .count-up { display: inline-block; }
+    </style>
+</head>
+<body class="bg-white text-slate-900 selection:bg-[#28b8d9] selection:text-white">
+
+<header class="w-full bg-white border-b border-slate-100 sticky top-0 z-[100]">
+    <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+        <a href="/" class="flex items-center">
+            <img src="{% static 'img/logo-webproarts.png' %}" alt="WebProArts" class="h-12 lg:h-16 w-auto object-contain">
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-10">
+            <div class="relative group">
+                <button class="flex items-center gap-2 text-[15px] font-bold text-slate-700 group-hover:text-[#28b8d9] transition-colors py-8 focus:outline-none">
+                    Services
+                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </button>
+                
+                <div class="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100]">
+                    <div class="bg-white border border-slate-100 shadow-2xl rounded-3xl w-[600px] p-6 grid grid-cols-2 gap-4 mt-2">
+                        <a href="{% url 'digital_marketing' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-12 h-12 object-contain" alt="Marketing">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Digital Marketing</p>
+                                <p class="text-[12px] text-slate-500">SEO & Ads Management</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'web_design' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-12 h-12 object-contain" alt="Web Design">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Website Design</p>
+                                <p class="text-[12px] text-slate-500">UI/UX & Development</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'social_media' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-12 h-12 object-contain" alt="Social Media">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Social Media</p>
+                                <p class="text-[12px] text-slate-500">Growth & Management</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'video_editing' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-12 h-12 object-contain" alt="Video Editing">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Video Editing</p>
+                                <p class="text-[12px] text-slate-500">Reels & Ads Production</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <a href="{% url 'career' %}" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors">Careers</a>
+            <a href="/" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors">Case Studies</a>
+            <a href="{% url 'about' %}" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors">About Us</a>
+            
+            <a href="{% url 'blogs' %}" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors relative group/blog">
+                Blog
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#28b8d9] transition-all group-hover/blog:w-full"></span>
+            </a>
+
+            <a href="{% url 'contact.html' %}" class="bg-[#16598a] text-white px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-[#28b8d9] transition-all shadow-lg shadow-[#16598a]/10">Contact Now</a>
+        </nav>
+
+        <button class="lg:hidden p-2 text-[#16598a] hover:bg-slate-50 rounded-lg transition-colors" onclick="toggleMenu()" aria-label="Open Menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round"></path></svg>
+        </button>
+    </div>
+</header>
+
+<div id="sidebar-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[150] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+<div id="mobile-sidebar" class="fixed top-0 right-0 w-[85%] max-w-[360px] h-full bg-white z-[200] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    <div class="p-6 flex items-center justify-between border-b border-slate-50">
+        <img src="{% static 'img/logo-webproarts.png' %}" alt="Logo" class="h-10 w-auto">
+        <button onclick="toggleMenu()" class="p-2 text-slate-400 hover:text-red-500 transition-colors">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6">
+        <div class="space-y-8">
+            <div>
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Our Services</p>
+                <div class="grid gap-2">
+                    <a href="{% url 'digital_marketing' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Digital Marketing</span>
+                    </a>
+                    <a href="{% url 'web_design' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Website Design</span>
+                    </a>
+                    <a href="{% url 'social_media' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Social Media</span>
+                    </a>
+                    <a href="{% url 'video_editing' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Video Editing</span>
+                    </a>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <div class="space-y-4">
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Company</p>
+                <a href="/" class="block px-3 font-bold text-slate-700 text-lg">Case Studies</a>
+                <a href="{% url 'career' %}" class="block px-3 font-bold text-slate-700 text-lg">Careers</a>
+
+                <a href="{% url 'about' %}" class="block px-3 font-bold text-slate-700 text-lg">About Us</a>
+                <a href="{% url 'blogs' %}" class="block px-3 font-bold text-slate-700 text-lg">Blog</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-6 border-t border-slate-50">
+        <a href="{% url 'contact.html' %}" class="block w-full text-center bg-[#16598a] text-white py-4 rounded-xl font-bold shadow-lg">Get Started Now</a>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        const sidebar = document.getElementById('mobile-sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const body = document.body;
+
+        if (sidebar.classList.contains('translate-x-full')) {
+            // Open Menu
+            sidebar.classList.remove('translate-x-full');
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            overlay.classList.add('opacity-100', 'pointer-events-auto');
+            body.style.overflow = 'hidden'; // Stop background scrolling
+        } else {
+            // Close Menu
+            sidebar.classList.add('translate-x-full');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            overlay.classList.remove('opacity-100', 'pointer-events-auto');
+            body.style.overflow = ''; // Restore scrolling
+        }
+    }
+</script>
+
+
+
+<section id="about" class="relative py-12 md:py-28 overflow-hidden bg-white">
+    <div class="absolute top-0 left-0 w-[300px] h-[300px] bg-[#28b8d9]/10 rounded-full blur-[80px] -z-10 -translate-x-1/2"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+        
+        <div class="relative order-first lg:order-last w-full">
+            <div class="swiper aboutSwiper rounded-[2.5rem] md:rounded-[4rem] shadow-2xl border border-slate-100 overflow-hidden bg-slate-50 aspect-[4/3] md:aspect-auto md:h-[600px]">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide relative">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800" class="w-full h-full object-cover" alt="Growth Strategy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#04131a]/95 via-transparent p-8 md:p-12 flex flex-col justify-end">
+                            <h4 class="text-white text-2xl md:text-3xl font-bold">The Visionary Edge</h4>
+                            <p class="text-white/60 text-sm">Experience born from true conviction.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide relative">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800" class="w-full h-full object-cover" alt="Web Development">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#04131a]/95 via-transparent p-8 md:p-12 flex flex-col justify-end">
+                            <h4 class="text-white text-2xl md:text-3xl font-bold">Modern Engineering</h4>
+                            <p class="text-white/60 text-sm">Responsive architectures for the digital age.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide relative">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800" class="w-full h-full object-cover" alt="Creative Design">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#04131a]/95 via-transparent p-8 md:p-12 flex flex-col justify-end">
+                            <h4 class="text-white text-2xl md:text-3xl font-bold">Creative Storytelling</h4>
+                            <p class="text-white/60 text-sm">Turning brand identities into revenue engines.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide relative">
+                        <img src="https://th.bing.com/th/id/OIP.B4sU6UOf2aQbbVEGJDckBAHaE8?w=254&h=184&c=7&r=0&o=7&pid=1.7&rm=3" class="w-full h-full object-cover" alt="Collaboration">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#04131a]/95 via-transparent p-8 md:p-12 flex flex-col justify-end">
+                            <h4 class="text-white text-2xl md:text-3xl font-bold">Strategic Partnership</h4>
+                            <p class="text-white/60 text-sm">Your growth is our primary mission.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide relative">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800" class="w-full h-full object-cover" alt="Tech Excellence">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#04131a]/95 via-transparent p-8 md:p-12 flex flex-col justify-end">
+                            <h4 class="text-white text-2xl md:text-3xl font-bold">Deep-Tech SEO</h4>
+                            <p class="text-white/60 text-sm">Optimized for maximum digital visibility.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination !bottom-8 !left-auto !right-8 !w-auto"></div>
+            </div>
+
+            <div class="absolute -bottom-6 -left-4 md:-bottom-8 md:-left-8 bg-white p-5 md:p-8 rounded-3xl shadow-2xl border border-slate-50 z-20 flex items-center gap-4 animate-float">
+                <div class="w-1.5 h-12 bg-gradient-to-b from-[#16598a] to-[#28b8d9] rounded-full"></div>
+                <div>
+                    <p class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Our Mission</p>
+                    <p class="text-sm md:text-lg font-bold text-slate-900 leading-tight">Amplify & Scale.</p>
+                </div>
+            </div>
+        </div>
+
+<div class="text-center lg:text-left mt-4 lg:mt-0">
+    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#28b8d9]/10 border border-[#28b8d9]/20 text-[#16598a] text-[10px] font-black uppercase tracking-[0.3em] mb-8">
+        WebPro Arts Journey
+    </div>
+
+    <h2 class="text-4xl md:text-6xl font-extrabold text-[#04131a] leading-[1.1] mb-8 tracking-tighter">
+        Creative ideas that help your <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#16598a] to-[#28b8d9]">brand stand out</span> online.
+    </h2>
+
+    <div class="text-slate-600 text-base md:text-lg leading-relaxed space-y-6 mb-12 max-w-2xl mx-auto lg:mx-0">
+        <p>
+            Eleven years ago, a spark of inspiration planted the seed for a creative path that has now blossomed into a dream I live every day. I firmly believe that true growth is born from experience—a conviction that has driven me to continuously learn, collaborate, and experiment with independent techniques to master <span class="font-bold text-[#16598a]">thoughtful design</span>.
+        </p>
+        <p>
+            This journey led to the creation of <span class="text-[#04131a] font-bold">WebPro Arts</span>, a premier digital marketing agency in Mumbai and Vasai-Virar. We engineer visually stunning, responsive architectures that prioritize intuitive UX while leveraging deep-tech SEO, scroll-stopping cinematic storytelling, and performance-based social media strategies to turn brand identities into 24/7 revenue engines.
+        </p>
+        <p class="text-sm border-l-4 border-[#28b8d9] pl-4 italic">
+            Whether through data-driven Google Ads or high-impact video editing, we are committed to delivering measurable results that elevate your brand.
+        </p>
+    </div>
+
+<a href="{% url 'contact.html' %}" class="inline-flex items-center justify-center w-full sm:w-auto px-12 py-5 bg-[#16598a] text-white font-bold rounded-2xl shadow-xl shadow-[#16598a]/20 hover:bg-[#28b8d9] transition-all transform active:scale-95 duration-300">
+    Know More About Us
+</a>
+</div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const aboutSwiper = new Swiper('.aboutSwiper', {
+            loop: true,
+            effect: 'fade', // Smooth fade transition
+            fadeEffect: {
+                crossFade: true
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    });
+</script>
+
+<section class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20">
+            <h3 class="text-xs font-black text-[#28b8d9] uppercase tracking-[0.4em] mb-4 text-nowrap">Integrated IT & Digital Ecosystem</h3>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-[#04131a]">Tailored For Modern Brands</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white p-10 rounded-[3rem] border border-slate-100 hover:border-[#28b8d9] transition-all shadow-sm hover:shadow-2xl hover:-translate-y-2 group">
+                <div class="w-16 h-16 rounded-full bg-[#16598a]/10 flex items-center justify-center mb-8 group-hover:bg-[#16598a] transition-all duration-500 mx-auto lg:mx-0 text-white">
+                    <svg class="w-8 h-8 text-[#16598a] group-hover:text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h4 class="font-bold text-xl text-[#04131a] mb-4 text-center lg:text-left">SEO Domination</h4>
+                <p class="text-sm text-slate-500 leading-relaxed text-center lg:text-left">We implement powerful meta-strategies and technical audits that boost search rankings and secure authority.</p>
+            </div>
+            <div class="bg-white p-10 rounded-[3rem] border border-slate-100 hover:border-[#28b8d9] transition-all shadow-sm hover:shadow-2xl hover:-translate-y-2 group">
+                <div class="w-16 h-16 rounded-full bg-[#28b8d9]/10 flex items-center justify-center mb-8 group-hover:bg-[#28b8d9] transition-all duration-500 mx-auto lg:mx-0">
+                    <svg class="w-8 h-8 text-[#28b8d9] group-hover:text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A2.406 2.406 0 015 13V9a2.406 2.406 0 01.436-.683M5.436 13.683l1.496 4.275m0 0a2.406 2.406 0 01-.436.683M5.436 8.317l1.496-4.275m0 0a2.406 2.406 0 014.36-.683" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h4 class="font-bold text-xl text-[#04131a] mb-4 text-center lg:text-left">Brand Amplified</h4>
+                <p class="text-sm text-slate-500 leading-relaxed text-center lg:text-left">Our mission is simple: amplify your digital footprint, drive engagement, and deliver measurable ROI growth.</p>
+            </div>
+            <div class="bg-white p-10 rounded-[3rem] border border-slate-100 hover:border-[#16598a] transition-all shadow-sm hover:shadow-2xl hover:-translate-y-2 group">
+                <div class="w-16 h-16 rounded-full bg-[#16598a]/10 flex items-center justify-center mb-8 group-hover:bg-[#16598a] transition-all duration-500 mx-auto lg:mx-0">
+                    <svg class="w-8 h-8 text-[#16598a] group-hover:text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h4 class="font-bold text-xl text-[#04131a] mb-4 text-center lg:text-left">Innovative Tech</h4>
+                <p class="text-sm text-slate-500 leading-relaxed text-center lg:text-left">We design modern digital experiences using React and Next.js, empowering businesses with high-end architecture.</p>
+            </div>
+            <div class="bg-white p-10 rounded-[3rem] border border-slate-100 hover:border-[#28b8d9] transition-all shadow-sm hover:shadow-2xl hover:-translate-y-2 group">
+                <div class="w-16 h-16 rounded-full bg-[#28b8d9]/10 flex items-center justify-center mb-8 group-hover:bg-[#28b8d9] transition-all duration-500 mx-auto lg:mx-0 text-white">
+                    <svg class="w-8 h-8 text-[#28b8d9] group-hover:text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h4 class="font-bold text-xl text-[#04131a] mb-4 text-center lg:text-left">Results Driven</h4>
+                <p class="text-sm text-slate-500 leading-relaxed text-center lg:text-left">Every campaign is fueled by data-driven campaigns, ensuring marketing investment translates into business outcomes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="bg-[#000000] text-white pt-16 pb-8 border-t border-white/5 font-sans">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-16 items-start">
+            
+            <div class="flex flex-col items-center lg:items-start">
+                <div class="mb-6 flex justify-center lg:justify-start">
+                    <img src="{% static 'img/logo.jpeg' %}" 
+                         alt="Web Pro Arts Logo" 
+                         class="h-16 w-auto block object-contain">
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed max-w-xs text-center lg:text-left">
+                    By optimizing content and leveraging relevant keywords, we secure your brand's prominent position in the digital landscape.
+                </p>
+            </div>
+
+            <div class="border-t border-white/5 lg:border-none pt-6 lg:pt-0">
+                <div class="flex justify-between items-center lg:block cursor-pointer lg:cursor-default group" onclick="toggleFooterAcc(this)">
+                    <h4 class="text-xs font-black uppercase tracking-[0.2em] text-white mb-0 lg:mb-8">Services</h4>
+                    <span class="lg:hidden text-slate-500 transition-transform duration-300 icon-plus">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12" stroke-width="2"></path></svg>
+                    </span>
+                </div>
+                <ul class="hidden lg:block mt-6 lg:mt-0 space-y-4 text-sm text-slate-400 accordion-content text-center lg:text-left">
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'graphic_design' %}">Graphics Design</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'web_design' %}">Website Design</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'video_editing' %}">Video Editing</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'social_media' %}">Social Media Marketing</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'digital_marketing' %}">Digital Marketing</a></li>
+                </ul>
+            </div>
+
+            <div class="border-t border-white/5 lg:border-none pt-6 lg:pt-0">
+                <div class="flex justify-between items-center lg:block cursor-pointer lg:cursor-default group" onclick="toggleFooterAcc(this)">
+                    <h4 class="text-xs font-black uppercase tracking-[0.2em] text-white mb-0 lg:mb-8">Contact Us</h4>
+                    <span class="lg:hidden text-slate-500 transition-transform duration-300 icon-plus">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12" stroke-width="2"></path></svg>
+                    </span>
+                </div>
+                <div class="hidden lg:block mt-6 lg:mt-0 space-y-6 text-sm text-slate-400 accordion-content">
+                    <div class="flex flex-col lg:flex-row items-center lg:items-start gap-3 lg:gap-4 text-center lg:text-left">
+                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-[#28b8d9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <p class="leading-relaxed">Office no-2, Shastri Nagar, Vasai West,<br>Mumbai, India 401202</p>
+                    </div>
+
+                    <a href="mailto:webproarts@gmail.com" class="flex flex-col lg:flex-row items-center gap-3 lg:gap-4 group/link hover:text-white transition-colors text-center lg:text-left">
+                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 group-hover/link:bg-[#28b8d9]/10 transition-colors">
+                            <svg class="w-4 h-4 text-[#28b8d9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                        <span>webproarts@gmail.com</span>
+                    </a>
+
+                    <a href="tel:+919561635544" class="flex flex-col lg:flex-row items-center gap-3 lg:gap-4 group/link hover:text-white transition-colors text-center lg:text-left">
+                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 group-hover/link:bg-[#28b8d9]/10 transition-colors">
+                            <svg class="w-4 h-4 text-[#28b8d9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <span>+91 95616 35544</span>
+
+                    </a>
+                    
+                </div>
+            </div>
+
+
+            <div class="border-t border-white/5 lg:border-none pt-6 lg:pt-0 flex flex-col items-center lg:items-start">
+                <h4 class="text-xs font-black uppercase tracking-[0.2em] text-white mb-6">Subscribe Our Mail</h4>
+                
+                <div class="flex gap-4 mb-6">
+                    <a href="https://www.instagram.com/webproarts/" target="_blank" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] transition-all duration-300 group">
+                        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://linkedin.com/company/webproarts" target="_blank" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#0077b5] transition-all duration-300 group">
+                        <svg class="w-4 h-4 text-white fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+
+                <form class="relative w-full max-w-sm">
+                    <input type="email" placeholder="Your Email" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-[#28b8d9] transition-all text-white placeholder:text-slate-500">
+                    <button class="absolute right-2 top-2 bottom-2 bg-[#28b8d9] text-black font-black px-4 rounded-lg text-[10px] uppercase tracking-wider hover:bg-white transition-all">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="text-[10px] text-slate-500 mt-4 italic">Stay updated with our latest growth hacks.</p>
+            </div>
+        </div>
+
+        <div class="pt-10 mt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <p class="text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">
+                © 2020 <span class="text-white/80">Web Pro Arts</span>. All Rights Reserved.
+            </p>
+
+            <div class="flex gap-10 items-center">
+                <a href="{% url 'privacy_policy' %}" class="relative text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] hover:text-white transition-all group">
+                    Privacy Policy
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#28b8d9] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="{% url 'terms_of_service' %}" class="relative text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] hover:text-white transition-all group">
+                    Terms of Service
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#28b8d9] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+function toggleFooterAcc(el) {
+    if (window.innerWidth >= 1024) return;
+    const content = el.nextElementSibling;
+    const icon = el.querySelector('.icon-plus');
+    content.classList.toggle('hidden');
+    if (icon) {
+        icon.style.transform = !content.classList.contains('hidden') ? 'rotate(45deg)' : 'rotate(0deg)';
+    }
+}
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+    function toggleFooterAcc(header) {
+        if (window.innerWidth >= 1024) return;
+        const list = header.nextElementSibling;
+        const icon = header.querySelector('span');
+        list.classList.toggle('hidden');
+        icon.style.transform = list.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(45deg)';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        new Swiper(".aboutSwiper", { effect: "fade", autoplay: { delay: 4000 }, loop: true, speed: 1000 });
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const goal = parseInt(target.getAttribute('data-target'));
+                    let current = 0;
+                    const increment = goal / 40;
+                    const update = () => {
+                        if (current < goal) {
+                            current += increment;
+                            target.innerText = Math.ceil(current);
+                            setTimeout(update, 25);
+                        } else { target.innerText = goal; }
+                    };
+                    update();
+                    counterObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.count-up').forEach(c => counterObserver.observe(c));
+    });
+</script>
+
+
+
+
+
+
+
+<div id="circle-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[10000] invisible opacity-0 transition-all duration-500 flex items-center justify-center">
+    <div class="absolute inset-0" onclick="toggleCircleMenu()"></div>
+    
+    <div class="relative w-80 h-80 flex items-center justify-center">
+        <button onclick="toggleCircleMenu()" class="z-[10001] bg-black text-white p-5 rounded-full shadow-2xl active:scale-90 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+
+        <a href="{% url 'digital_marketing' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 0deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Digital</span>
+        </a>
+
+        <a href="{% url 'web_design' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 72deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Design</span>
+        </a>
+
+        <a href="{% url 'graphic_design' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 144deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Graphics</span>
+        </a>
+
+        <a href="{% url 'social_media' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 216deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Social</span>
+        </a>
+
+        <a href="{% url 'video_editing' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 288deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Video</span>
+        </a>
+    </div>
+</div>
+
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 z-[9999] h-[75px] pb-safe shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+    <div class="flex justify-around items-center h-full max-w-lg mx-auto">
+        
+        <a href="/" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Home</span>
+        </a>
+
+        <button onclick="toggleCircleMenu()" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 focus:outline-none active:opacity-60 transition-opacity">
+            <div class="relative">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <span class="absolute -top-1 -right-1 w-2 h-2 bg-black rounded-full"></span>
+            </div>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Services</span>
+        </button>
+
+        <a href="{% url 'career' %}" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Career</span>
+        </a>
+
+        <a href="{% url 'about' %}" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">About</span>
+        </a>
+
+
+            <a href="https://wa.me/919561635544" target="_blank" class="flex flex-col items-center justify-center flex-1 h-full text-green-600 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span class="text-[10px] font-black mt-1 uppercase tracking-tighter">Chat</span>
+        </a>
+
+        
+    </div>
+</nav>
+<style>
+    .service-node {
+        transition: all 0.5s ease;
+        pointer-events: none;
+    }
+    #circle-menu:not(.invisible) .service-node {
+        pointer-events: auto;
+    }
+</style>
+
+
+<script>
+    function toggleCircleMenu() {
+        const menu = document.getElementById('circle-menu');
+        const nodes = document.querySelectorAll('.service-node');
+        const isOpening = menu.classList.contains('invisible');
+
+        if (isOpening) {
+            menu.classList.remove('invisible', 'opacity-0');
+            document.body.style.overflow = 'hidden'; // Stop background scroll
+            
+            nodes.forEach((node, i) => {
+                const angle = node.style.getPropertyValue('--angle');
+                // Move out 120px from center
+                node.style.transform = `rotate(${angle}) translateY(-120px) rotate(-${angle})`;
+                node.style.opacity = '1';
+                node.style.transition = `all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) ${i * 0.05}s`;
+            });
+        } else {
+            nodes.forEach((node) => {
+                node.style.transform = `rotate(0deg) translateY(0px) rotate(0deg)`;
+                node.style.opacity = '0';
+                node.style.transition = 'all 0.3s ease-in';
+            });
+            
+            setTimeout(() => {
+                menu.classList.add('invisible', 'opacity-0');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

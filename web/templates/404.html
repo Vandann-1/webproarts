@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | WebPro Arts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta http-equiv="refresh" content="2;url=/" />
+</head>
+<body class="bg-white m-0 p-0 overflow-x-hidden">
+
+    <header class="w-full bg-white border-b border-slate-100 sticky top-0 z-[100]">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="/" class="flex items-center">
+                <img src="{% static 'img/logo-webproarts.png' %}" alt="WebProArts" class="h-12 lg:h-16 w-auto object-contain">
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-10">
+                <div class="relative group">
+                    <button class="flex items-center gap-2 text-[15px] font-bold text-slate-700 group-hover:text-[#28b8d9] transition-colors py-8 focus:outline-none">
+                        Services
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </button>
+                    
+                    <div class="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100]">
+                        <div class="bg-white border border-slate-100 shadow-2xl rounded-3xl w-[600px] p-6 grid grid-cols-2 gap-4 mt-2">
+                            <a href="{% url 'digital_marketing' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                                <img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-12 h-12 object-contain" alt="Marketing">
+                                <div>
+                                    <p class="font-bold text-navy-950 text-sm">Digital Marketing</p>
+                                    <p class="text-[12px] text-slate-500">SEO & Ads Management</p>
+                                </div>
+                            </a>
+                            <a href="{% url 'web_design' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                                <img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-12 h-12 object-contain" alt="Web Design">
+                                <div>
+                                    <p class="font-bold text-navy-950 text-sm">Website Design</p>
+                                    <p class="text-[12px] text-slate-500">UI/UX & Development</p>
+                                </div>
+                            </a>
+                            <a href="{% url 'social_media' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-12 h-12 object-contain" alt="Social Media">
+                                <div>
+                                    <p class="font-bold text-navy-950 text-sm">Social Media</p>
+                                    <p class="text-[12px] text-slate-500">Growth & Management</p>
+                                </div>
+                            </a>
+                            <a href="{% url 'video_editing' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                                <img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-12 h-12 object-contain" alt="Video Editing">
+                                <div>
+                                    <p class="font-bold text-navy-950 text-sm">Video Editing</p>
+                                    <p class="text-[12px] text-slate-500">Reels & Ads Production</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/#work" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors">Case Studies</a>
+                <a href="{% url 'about' %}" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors">About Us</a>
+                
+                <a href="{% url 'blogs' %}" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors relative group/blog">
+                    Blog
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#28b8d9] transition-all group-hover/blog:w-full"></span>
+                </a>
+
+                <a href="{% url 'contact.html' %}" class="bg-[#16598a] text-white px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-[#28b8d9] transition-all shadow-lg shadow-[#16598a]/10">Contact Now</a>
+            </nav>
+
+            <button class="lg:hidden p-2 text-[#16598a] hover:bg-slate-50 rounded-lg transition-colors" onclick="toggleMenu()">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round"></path></svg>
+            </button>
+        </div>
+    </header>
+    <main class="flex flex-col items-center justify-center min-h-[calc(100vh-96px)] px-6 py-20 text-center">
+        <h1 class="text-[120px] lg:text-[180px] font-black text-slate-100 leading-none select-none">404</h1>
+        <div class="relative -mt-16 lg:-mt-24">
+            <h2 class="text-3xl lg:text-5xl font-bold text-slate-900 mb-4">Page not found</h2>
+            <p class="text-slate-500 text-lg max-w-md mx-auto mb-10">
+                The link you followed might be broken, or the page has been moved. 
+                <span class="block font-semibold text-[#16598a] mt-2 italic">Redirecting you home in  seconds...</span>
+            </p>
+            <a href="/" class="inline-flex items-center gap-2 bg-[#16598a] text-white px-10 py-4 rounded-2xl font-bold hover:bg-[#28b8d9] transition-all shadow-xl shadow-[#16598a]/20">
+                Go Back Home
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+            </a>
+        </div>
+    </main>
+    <div id="sidebar-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[150] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="mobile-sidebar" class="fixed top-0 right-0 w-[85%] max-w-[360px] h-full bg-white z-[200] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        </div>
+
+    <script>
+        // Menu Toggle
+        function toggleMenu() {
+            const sidebar = document.getElementById('mobile-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const body = document.body;
+            if (sidebar.classList.contains('translate-x-full')) {
+                sidebar.classList.remove('translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100', 'pointer-events-auto');
+                body.style.overflow = 'hidden';
+            } else {
+                sidebar.classList.add('translate-x-full');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                overlay.classList.remove('opacity-100', 'pointer-events-auto');
+                body.style.overflow = '';
+            }
+        }
+
+        // JS Redirect Backup (2 Seconds)
+        setTimeout(function() {
+            window.location.href = "/";
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1842 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}">
+    <title>WebProArts | Digital Marketing, Web Design & SEO Agency in Mumbai</title>
+
+    <meta name="description" content="WebProArts is a digital marketing, web design, and SEO agency in Mumbai helping businesses grow online with modern strategies.">
+{% load static %}
+<link rel="manifest" href="{% static 'manifest.json' %}">
+<meta name="theme-color" content="#000000">
+
+
+
+
+
+
+
+
+
+
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://webproarts.in">
+
+    <meta property="og:title" content="WebProArts - Digital Growth Agency">
+    <meta property="og:description" content="Web development, marketing & social media growth services.">
+    <meta property="og:url" content="https://webproarts.in">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Swiper CSS loaded ONCE only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Swiper JS loaded ONCE only -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { display: ['Bricolage Grotesque', 'sans-serif'], body: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        brand: { 400: '#22d3ee', 500: '#0ea5e9', 600: '#0369a1' },
+                        navy: { 900: '#071e2b', 950: '#04131a' },
+                        saas: { black: '#0a0a0a', card: '#111111' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass { background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(14,165,233,0.1); }
+        .brand-gradient { background: linear-gradient(135deg, #22d3ee 0%, #0369a1 100%); }
+        .text-gradient { background: linear-gradient(90deg, #22d3ee, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .font-display { font-family: 'Bricolage Grotesque', sans-serif; }
+        .typed-cursor { color: #28b8d9; font-size: 1em; margin-left: 4px; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(3px); }
+            50% { transform: translateY(-20px) rotate(1px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-infinite {
+            display: flex;
+            width: max-content;
+            animation: marquee 40s linear infinite;
+        }
+        .animate-marquee-infinite:hover { animation-play-state: paused; }
+
+        .partner-logo {
+            filter: grayscale(100%);
+            opacity: 0.4;
+            transition: all 0.5s ease;
+        }
+        .partner-card:hover .partner-logo {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Swiper custom */
+        .swiper-button-next, .swiper-button-prev {
+            color: #16598a !important;
+            background: white;
+            width: 50px !important;
+            height: 50px !important;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #f1f5f9;
+        }
+        .swiper-button-next:after, .swiper-button-prev:after { font-size: 18px !important; font-weight: bold; }
+        .swiper-pagination-bullet-active { background: #28b8d9 !important; width: 30px; border-radius: 10px; transition: all 0.3s; }
+
+        /* Work section */
+        .work-gradient {
+            background: linear-gradient(to top, rgba(4,19,26,0.98) 0%, rgba(4,19,26,0.4) 60%, transparent 100%);
+        }
+        .project-card:hover .project-img { transform: scale(1.1); }
+        .hidden-grid { display: none; }
+        .hidden-grid.active { display: grid; animation: fadeInUp 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .workSwiper .swiper-pagination-bullet-active { background: #28b8d9 !important; width: 24px; border-radius: 12px; transition: 0.3s; }
+    </style>
+</head>
+<body class="font-body text-slate-900 bg-white selection:bg-brand-400 selection:text-navy-950">
+
+<!-- ========== HEADER ========== -->
+<header class="w-full bg-white border-b border-slate-100 sticky top-0 z-[100]">
+    <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+        <a href="/" class="flex items-center">
+            <img src="{% static 'img/logo-webproarts.png' %}" alt="WebProArts" class="h-12 lg:h-16 w-auto object-contain">
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-10">
+            <div class="relative group">
+                <button class="flex items-center gap-2 text-[15px] font-bold text-slate-700 group-hover:text-[#28b8d9] transition-colors py-8 focus:outline-none">
+                    Services
+                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </button>
+                
+                <div class="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100]">
+                    <div class="bg-white border border-slate-100 shadow-2xl rounded-3xl w-[600px] p-6 grid grid-cols-2 gap-4 mt-2">
+                        <a href="{% url 'digital_marketing' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-12 h-12 object-contain" alt="Marketing">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Digital Marketing</p>
+                                <p class="text-[12px] text-slate-500">SEO & Ads Management</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'web_design' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-12 h-12 object-contain" alt="Web Design">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Website Design</p>
+                                <p class="text-[12px] text-slate-500">UI/UX & Development</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'social_media' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-12 h-12 object-contain" alt="Social Media">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Social Media</p>
+                                <p class="text-[12px] text-slate-500">Growth & Management</p>
+                            </div>
+                        </a>
+                        <a href="{% url 'video_editing' %}" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-12 h-12 object-contain" alt="Video Editing">
+                            <div>
+                                <p class="font-bold text-navy-950 text-sm">Video Editing</p>
+                                <p class="text-[12px] text-slate-500">Reels & Ads Production</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <a href="{% url 'career' %}" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors">Careers</a>
+            <a href="{% url 'portfolio' %}" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors">Case Studies</a>
+            <a href="{% url 'about' %}" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors">About Us</a>
+            
+            <a href="{% url 'blogs' %}" class="text-[15px] font-bold text-slate-700 hover:text-[#28b8d9] transition-colors relative group/blog">
+                Blog
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#28b8d9] transition-all group-hover/blog:w-full"></span>
+            </a>
+
+            <a href="{% url 'contact.html' %}" class="bg-[#16598a] text-white px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-[#28b8d9] transition-all shadow-lg shadow-[#16598a]/10">Contact Now</a>
+        </nav>
+
+        <button class="lg:hidden p-2 text-[#16598a] hover:bg-slate-50 rounded-lg transition-colors" onclick="toggleMenu()" aria-label="Open Menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round"></path></svg>
+        </button>
+    </div>
+</header>
+
+<div id="sidebar-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[150] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+<div id="mobile-sidebar" class="fixed top-0 right-0 w-[85%] max-w-[360px] h-full bg-white z-[200] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    <div class="p-6 flex items-center justify-between border-b border-slate-50">
+        <img src="{% static 'img/logo-webproarts.png' %}" alt="Logo" class="h-10 w-auto">
+        <button onclick="toggleMenu()" class="p-2 text-slate-400 hover:text-red-500 transition-colors">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6">
+        <div class="space-y-8">
+            <div>
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Our Services</p>
+                <div class="grid gap-2">
+                    <a href="{% url 'digital_marketing' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Digital Marketing</span>
+                    </a>
+                    <a href="{% url 'web_design' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Website Design</span>
+                    </a>
+                    <a href="{% url 'social_media' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Social Media</span>
+                    </a>
+                    <a href="{% url 'video_editing' %}" class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 group">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-8 h-8" alt="">
+                        <span class="font-bold text-slate-700 group-hover:text-[#28b8d9]">Video Editing</span>
+                    </a>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <div class="space-y-4">
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Company</p>
+                <a href="{% url 'portfolio' %}" class="block px-3 font-bold text-slate-700 text-lg">Case Studies</a>
+                <a href="{% url 'career' %}" class="block px-3 font-bold text-slate-700 text-lg">Careers</a>
+
+                <a href="{% url 'about' %}" class="block px-3 font-bold text-slate-700 text-lg">About Us</a>
+                <a href="{% url 'blogs' %}" class="block px-3 font-bold text-slate-700 text-lg">Blog</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-6 border-t border-slate-50">
+        <a href="{% url 'contact.html' %}" class="block w-full text-center bg-[#16598a] text-white py-4 rounded-xl font-bold shadow-lg">Get Started Now</a>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        const sidebar = document.getElementById('mobile-sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const body = document.body;
+
+        if (sidebar.classList.contains('translate-x-full')) {
+            // Open Menu
+            sidebar.classList.remove('translate-x-full');
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            overlay.classList.add('opacity-100', 'pointer-events-auto');
+            body.style.overflow = 'hidden'; // Stop background scrolling
+        } else {
+            // Close Menu
+            sidebar.classList.add('translate-x-full');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            overlay.classList.remove('opacity-100', 'pointer-events-auto');
+            body.style.overflow = ''; // Restore scrolling
+        }
+    }
+</script>
+
+<!-- ========== HERO ========== -->
+
+<section id="hero" class="relative min-h-[90vh] md:min-h-screen pt-20 pb-16 overflow-hidden bg-white flex items-center" aria-label="WebProArts Hero Section">
+    
+    <div class="absolute top-0 right-0 w-full lg:w-2/3 h-full pointer-events-none overflow-hidden">
+        <div class="absolute top-[-10%] right-[-10%] w-[500px] md:w-[800px] h-[500px] md:h-[800px] bg-[#16598a]/10 rounded-full blur-[100px] animate-fluid-1"></div>
+        <div class="absolute bottom-[-10%] right-[10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#28b8d9]/15 rounded-full blur-[100px] animate-fluid-2"></div>
+        
+        <svg class="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,500 C200,300 400,700 600,500 C800,300 1000,700 1200,500" fill="none" stroke="url(#blueGrad)" stroke-width="2" class="animate-wave" />
+            <defs>
+                <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#16598a;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#28b8d9;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
+        
+        <div class="lg:col-span-8 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#16598a]/5 border border-[#16598a]/10 text-[#16598a] text-[11px] font-black uppercase tracking-[0.2em] mb-8">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute h-full w-full rounded-full bg-[#28b8d9] opacity-75"></span>
+                    <span class="relative rounded-full h-2 w-2 bg-[#28b8d9]"></span>
+                </span>
+                Top-Rated Digital Agency in Vasai-Virar
+            </div>
+
+            <h1 class="font-black text-6xl sm:text-7xl md:text-8xl lg:text-[110px] text-[#04131a] leading-[0.85] tracking-tighter mb-6">
+                SCALE YOUR <br> BUSINESS <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#16598a] to-[#28b8d9]">ONLINE</span>
+            </h1>
+            
+            <div class="h-14 md:h-20 mb-10 overflow-hidden w-full">
+                <div class="swiper heroTypeSwiper h-full">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide flex items-center justify-center lg:justify-start">
+                            <span class="text-3xl md:text-5xl font-black text-slate-300 uppercase tracking-widest">SEO Experts.</span>
+                        </div>
+                        <div class="swiper-slide flex items-center justify-center lg:justify-start">
+                            <span class="text-3xl md:text-5xl font-black text-[#28b8d9] uppercase tracking-widest">Custom Web Apps.</span>
+                        </div>
+                        <div class="swiper-slide flex items-center justify-center lg:justify-start">
+                            <span class="text-3xl md:text-5xl font-black text-[#16598a] uppercase tracking-widest">Meta & Google Ads.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-lg md:text-xl text-slate-500 mb-12 max-w-xl font-medium leading-relaxed">
+                Unlock growth with data-driven <strong class="text-slate-700">Digital Marketing</strong>, high-performance <strong class="text-slate-700">Web Development</strong>, and creative <strong class="text-slate-700">SEO Strategies</strong>. <br>
+                <span class="text-[#16598a] font-bold underline decoration-[#28b8d9] decoration-4 underline-offset-8">Vasai-Virar's No.1 Results-Driven Growth Partner.</span>
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center gap-8 w-full sm:w-auto">
+                <a href="{% url 'contact.html' %}" title="Book a Free SEO and Website Audit" class="inline-block w-full sm:w-auto px-12 py-6 bg-[#16598a] text-white font-black text-center rounded-2xl shadow-[0_20px_50px_rgba(22,89,138,0.3)] hover:bg-[#04131a] transition-all transform hover:-translate-y-1 active:scale-95">
+                    GET FREE SEO AUDIT →
+                </a>
+                
+                <div class="flex items-center gap-8">
+                    <div class="text-left">
+                        <p class="text-3xl font-black text-[#04131a]">200+</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Clients Connected</p>
+                    </div>
+                    <div class="w-px h-10 bg-slate-100"></div>
+                    <div class="text-left">
+                        <p class="text-3xl font-black text-[#28b8d9]">+84%</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Growth Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-4 relative hidden lg:flex items-center justify-center min-h-[600px]">
+            <div class="absolute inset-0 flex items-center justify-center text-[450px] font-black text-[#16598a]/5 select-none z-0">W</div>
+
+            <div class="absolute top-10 -left-10 animate-float bg-white/40 backdrop-blur-xl p-5 rounded-3xl border border-white/50 shadow-xl z-20 w-44">
+                <div class="w-10 h-10 bg-[#16598a] rounded-xl mb-3 flex items-center justify-center text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                </div>
+                <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Code</p>
+                <p class="text-lg font-black text-[#04131a]">Web Dev</p>
+            </div>
+
+            <div class="absolute top-32 -right-8 animate-float-delayed bg-white/60 backdrop-blur-xl p-5 rounded-3xl border border-white/50 shadow-xl z-20 w-44">
+                <div class="w-10 h-10 bg-[#28b8d9] rounded-xl mb-3 flex items-center justify-center text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                </div>
+                <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Growth</p>
+                <p class="text-lg font-black text-[#04131a]">Marketing</p>
+            </div>
+
+            <div class="absolute bottom-20 -left-4 animate-float-slow bg-white/50 backdrop-blur-xl p-5 rounded-3xl border border-white/50 shadow-xl z-20 w-48">
+                <div class="w-10 h-10 bg-slate-800 rounded-xl mb-3 flex items-center justify-center text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14V10zM5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                </div>
+                <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Visuals</p>
+                <p class="text-lg font-black text-[#04131a]">Video Editing</p>
+            </div>
+
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-float-center bg-white/80 backdrop-blur-2xl p-7 rounded-[2.5rem] border border-white/50 shadow-2xl z-30 w-56">
+                <div class="w-12 h-12 bg-gradient-to-tr from-[#16598a] to-[#28b8d9] rounded-2xl mb-4 flex items-center justify-center text-white shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>
+                </div>
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Creative</p>
+                <p class="text-2xl font-black text-[#04131a]">Web Design</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<style>
+    /* 1. Brand Fluid Background Animations */
+    @keyframes fluid-1 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(-5%, 15%) scale(1.1); }
+    }
+    @keyframes fluid-2 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(15%, -10%) scale(1.2); }
+    }
+    .animate-fluid-1 { animation: fluid-1 18s ease-in-out infinite; }
+    .animate-fluid-2 { animation: fluid-2 22s ease-in-out infinite; }
+
+    /* 2. Wave Path Animation */
+    @keyframes wave {
+        0% { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: -1000; }
+    }
+    .animate-wave {
+        stroke-dasharray: 500;
+        animation: wave 25s linear infinite;
+    }
+
+    /* 3. Floating Effects */
+    @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(-1deg); }
+    }
+    @keyframes float-slow {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-30px) rotate(2deg); }
+    }
+    @keyframes float-center {
+        0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+        50% { transform: translate(-50%, -50%) translateY(-20px); }
+    }
+
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-float-delayed { animation: float 7s ease-in-out infinite reverse; }
+    .animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
+    .animate-float-center { animation: float-center 6s ease-in-out infinite; }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof Swiper !== 'undefined') {
+            new Swiper(".heroTypeSwiper", {
+                direction: "vertical",
+                autoplay: { delay: 2800, disableOnInteraction: false },
+                loop: true,
+                speed: 900,
+                allowTouchMove: false
+            });
+        }
+    });
+</script>
+
+<!-- ========== MARQUEE ========== -->
+
+
+<style>
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    
+    .animate-fast-marquee {
+        display: flex;
+        width: max-content;
+        /* Increased speed slightly for that 'fast' energy while staying readable */
+        animation: marquee 15s linear infinite; 
+    }
+
+    .marquee-container:hover .animate-fast-marquee {
+        animation-play-state: paused;
+    }
+
+    /* Masking for a smooth fade effect on the left and right edges */
+    .marquee-mask {
+        mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    }
+</style>
+
+<div class="marquee-container relative py-10 overflow-hidden bg-white border-y border-slate-100 marquee-mask">
+    <div class="relative z-10 flex">
+        <div class="animate-fast-marquee flex items-center">
+            
+            <div class="flex items-center shrink-0">
+                <div class="flex items-center gap-4 mx-12">
+                    <span class="text-3xl font-extrabold text-slate-500 uppercase tracking-tighter">Google Ads</span>
+                </div>
+                <div class="w-2.5 h-2.5 rotate-45 bg-[#28b8d9]"></div>
+
+                <div class="flex items-center gap-4 mx-12">
+                    <span class="text-3xl font-extrabold text-slate-500 uppercase tracking-tighter">Meta Business</span>
+                </div>
+                <div class="w-2.5 h-2.5 rotate-45 bg-[#28b8d9]"></div>
+
+                <div class="flex items-center gap-4 mx-12">
+                    <span class="text-3xl font-extrabold text-slate-500 uppercase tracking-tighter">SaaS Tech</span>
+                </div>
+                <div class="w-2.5 h-2.5 rotate-45 bg-[#28b8d9]"></div>
+
+                <div class="flex items-center gap-4 mx-12">
+                    <span class="text-3xl font-extrabold text-slate-500 uppercase tracking-tighter">SEO Expert</span>
+                </div>
+                <div class="w-2.5 h-2.5 rotate-45 bg-[#28b8d9]"></div>
+                
+                <div class="flex items-center gap-4 mx-12">
+                    <span class="text-3xl font-extrabold text-slate-500 uppercase tracking-tighter">Growth Hacking</span>
+                </div>
+                <div class="w-2.5 h-2.5 rotate-45 bg-[#28b8d9]"></div>
+            </div>
+
+            <div class="flex items-center shrink-0">
+                <div class="flex items-center gap-4 mx-12">
+                    <span class="text-3xl font-extrabold text-slate-500 uppercase tracking-tighter">Google Ads</span>
+                </div>
+                <div class="w-2.5 h-2.5 rotate-45 bg-[#28b8d9]"></div>
+
+                <div class="flex items-center gap-4 mx-12">
+                    <span class="text-3xl font-extrabold text-slate-500 uppercase tracking-tighter">Meta Business</span>
+                </div>
+                <div class="w-2.5 h-2.5 rotate-45 bg-[#28b8d9]"></div>
+
+                <div class="flex items-center gap-4 mx-12">
+                    <span class="text-3xl font-extrabold text-slate-500 uppercase tracking-tighter">SaaS Tech</span>
+                </div>
+                <div class="w-2.5 h-2.5 rotate-45 bg-[#28b8d9]"></div>
+
+                <div class="flex items-center gap-4 mx-12">
+                    <span class="text-3xl font-extrabold text-slate-500 uppercase tracking-tighter">SEO Expert</span>
+                </div>
+                <div class="w-2.5 h-2.5 rotate-45 bg-[#28b8d9]"></div>
+                
+                <div class="flex items-center gap-4 mx-12">
+                    <span class="text-3xl font-extrabold text-slate-500 uppercase tracking-tighter">Growth Hacking</span>
+                </div>
+                <div class="w-2.5 h-2.5 rotate-45 bg-[#28b8d9]"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SEO Content Section -->
+
+
+<!-- ========== SERVICES ========== -->
+<section id="services" class="py-24 bg-slate-50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div class="max-w-xl">
+                <div class="text-[#1db2a6] font-black text-[10px] uppercase tracking-[0.3em] mb-4">Expertise</div>
+                    <h2 class="font-display text-4xl md:text-5xl font-extrabold text-navy-950 leading-tight">
+                        Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#16598a] to-[#28b8d9]">
+                            Core Services
+                        </span>
+                    </h2>
+            </div>
+            
+            <!-- <div class="hidden md:flex gap-3 mb-2">
+                <div class="srv-prev swiper-button-prev !static !m-0 w-12 h-12 rounded-full border border-slate-200 bg-white text-navy-950 transition-all hover:bg-[#16598a] hover:text-white hover:border-[#16598a] flex items-center justify-center cursor-pointer shadow-sm after:!content-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+                </div>
+                <div class="srv-next swiper-button-next !static !m-0 w-12 h-12 rounded-full border border-slate-200 bg-white text-navy-950 transition-all hover:bg-[#a3c639] hover:text-white hover:border-[#a3c639] flex items-center justify-center cursor-pointer shadow-sm after:!content-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </div>
+            </div> -->
+        </div>
+
+        <div class="swiper serviceSwiper pb-16 px-1">
+            <div class="swiper-wrapper">
+                
+                <div class="swiper-slide h-auto">
+                    <div class="bg-white p-10 rounded-[3rem] border border-slate-100 h-full flex flex-col transition-all duration-500 group hover:shadow-2xl hover:shadow-cyan-500/10 hover:-translate-y-2">
+                        <div class="w-20 h-20 mb-8 rounded-3xl bg-slate-50 p-4 group-hover:bg-[#f0fdf4] transition-colors duration-500">
+                            <img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" alt="Web Design">
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-navy-950 mb-4 tracking-tight">Website Design</h3>
+                        <p class="text-slate-500 leading-relaxed mb-8 flex-grow">Custom UI/UX and SaaS platforms built with Next.js & React for high-speed performance.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-2 text-[10px] font-bold text-slate-400 tracking-wider"><div class="w-1.5 h-1.5 bg-[#28b8d9] rounded-full"></div> RESPONSIVE DESIGN</li>
+                            <li class="flex items-center gap-2 text-[10px] font-bold text-slate-400 tracking-wider"><div class="w-1.5 h-1.5 bg-[#a3c639] rounded-full"></div> NEXT.JS SPEED</li>
+                        </ul>
+                        <a href="{% url 'web_design' %}" class="text-[#16598a] font-black text-xs tracking-widest uppercase border-b-2 border-[#28b8d9]/10 pb-1 w-fit group-hover:border-[#28b8d9] transition-all">Enquire Now →</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide h-auto">
+                    <div class="bg-white p-10 rounded-[3rem] border-2 border-[#a3c639]/30 h-full flex flex-col transition-all duration-500 group shadow-lg shadow-green-500/5 hover:shadow-2xl hover:shadow-green-500/15 hover:-translate-y-2 relative overflow-hidden">
+                        <div class="absolute -top-12 -right-12 w-24 h-24 bg-[#a3c639]/10 rounded-full blur-3xl group-hover:bg-[#28b8d9]/20 transition-colors"></div>
+                        <div class="w-20 h-20 mb-8 rounded-3xl bg-green-50 p-4 group-hover:bg-cyan-50 transition-colors">
+                            <img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-full h-full object-contain group-hover:scale-110 transition-transform" alt="Marketing">
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-navy-950 mb-4 tracking-tight">Digital Marketing</h3>
+                        <p class="text-slate-500 leading-relaxed mb-8 flex-grow">SEO mastery and ROI-focused Google Ads to rank your brand where the customers are.</p>
+<div class="px-5 py-2 bg-[#28b8d9] rounded-full text-[10px] font-black text-white uppercase tracking-[0.2em] w-fit mb-8 shadow-lg shadow-[#28b8d9]/20 transform hover:scale-105 transition-transform cursor-default">
+    High ROAS Focus
+</div>                        <a href="{% url 'digital_marketing' %}" class="text-[#16598a] font-black text-xs tracking-widest uppercase border-b-2 border-[#28b8d9]/10 pb-1 w-fit group-hover:border-[#28b8d9] transition-all">Claim Audit →</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide h-auto">
+                    <div class="bg-white p-10 rounded-[3rem] border border-slate-100 h-full flex flex-col transition-all duration-500 group hover:shadow-2xl hover:shadow-cyan-500/10 hover:-translate-y-2">
+                        <div class="w-20 h-20 mb-8 rounded-3xl bg-slate-50 p-4 group-hover:bg-[#f0fdf4] transition-colors">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-full h-full object-contain group-hover:scale-110 transition-transform" alt="Social Media">
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-navy-950 mb-4 tracking-tight">Social Media</h3>
+                        <p class="text-slate-500 leading-relaxed mb-8 flex-grow">Viral content strategy and management across all platforms to build your community.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-2 text-[10px] font-bold text-slate-400 tracking-wider"><div class="w-1.5 h-1.5 bg-[#28b8d9] rounded-full"></div> INSTAGRAM GROWTH</li>
+                            <li class="flex items-center gap-2 text-[10px] font-bold text-slate-400 tracking-wider"><div class="w-1.5 h-1.5 bg-[#28b8d9] rounded-full"></div> CONTENT ENGINE</li>
+                        </ul>
+                        <a href="{% url 'social_media' %}" class="text-[#16598a] font-black text-xs tracking-widest uppercase border-b-2 border-[#28b8d9]/10 pb-1 w-fit group-hover:border-[#28b8d9] transition-all">Enquire Now →</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide h-auto">
+                    <div class="bg-white p-10 rounded-[3rem] border border-slate-100 h-full flex flex-col transition-all duration-500 group hover:shadow-2xl hover:shadow-cyan-500/10 hover:-translate-y-2">
+                        <div class="w-20 h-20 mb-8 rounded-3xl bg-slate-50 p-4 group-hover:bg-[#f0fdf4] transition-colors">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-full h-full object-contain group-hover:scale-110 transition-transform" alt="Video">
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-navy-950 mb-4 tracking-tight">Video Editing</h3>
+                        <p class="text-slate-500 leading-relaxed mb-8 flex-grow">Professional cinematic storytelling, Reels, and ads that stop the scroll instantly.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-2 text-[10px] font-bold text-slate-400 tracking-wider"><div class="w-1.5 h-1.5 bg-[#28b8d9] rounded-full"></div> ADS PRODUCTION</li>
+                            <li class="flex items-center gap-2 text-[10px] font-bold text-slate-400 tracking-wider"><div class="w-1.5 h-1.5 bg-[#28b8d9] rounded-full"></div> REEL STRATEGY</li>
+                        </ul>
+                        <a href="{% url 'video_editing' %}" class="text-[#16598a] font-black text-xs tracking-widest uppercase border-b-2 border-[#28b8d9]/10 pb-1 w-fit group-hover:border-[#28b8d9] transition-all">Enquire Now →</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide h-auto">
+                    <div class="bg-white p-10 rounded-[3rem] border border-slate-100 h-full flex flex-col transition-all duration-500 group hover:shadow-2xl hover:shadow-cyan-500/10 hover:-translate-y-2">
+                        <div class="w-20 h-20 mb-8 rounded-3xl bg-slate-50 p-4 group-hover:bg-[#f0fdf4] transition-colors">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2970/2970785.png" class="w-full h-full object-contain group-hover:scale-110 transition-transform" alt="Graphics">
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-navy-950 mb-4 tracking-tight">Graphic Design</h3>
+                        <p class="text-slate-500 leading-relaxed mb-8 flex-grow">Complete brand identity systems, logos, and premium visuals for digital dominance.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-2 text-[10px] font-bold text-slate-400 tracking-wider"><div class="w-1.5 h-1.5 bg-[#28b8d9] rounded-full"></div> LOGO BRANDING</li>
+                            <li class="flex items-center gap-2 text-[10px] font-bold text-slate-400 tracking-wider"><div class="w-1.5 h-1.5 bg-[#28b8d9] rounded-full"></div> VISUAL ART</li>
+                        </ul>
+                        <a href="{% url 'graphic_design' %}" class="text-[#16598a] font-black text-xs tracking-widest uppercase border-b-2 border-[#28b8d9]/10 pb-1 w-fit group-hover:border-[#28b8d9] transition-all">Enquire Now →</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-pagination !static mt-12"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+  var swiper = new Swiper(".serviceSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: { delay: 4000 },
+    navigation: {
+      nextEl: ".srv-next",
+      prevEl: ".srv-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      640: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+    },
+  });
+</script>
+
+<!-- ========== ECOSYSTEM ========== -->
+<section class="bg-slate-50 py-16 px-6 md:px-12 lg:px-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">
+        Digital Marketing <span class="relative inline-block">
+          Solutions
+          <span class="absolute bottom-0 left-0 w-full h-1 bg-cyan-500"></span>
+        </span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8">
+        <div class="flex gap-4">
+          <div class="mt-1">
+            <svg class="w-6 h-6 text-cyan-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">Brand Solution</h3>
+            <p class="text-slate-600 mt-1 leading-relaxed">Boost your brand with strategies that provide recognition, build trust and foster loyalty, helping you stand out and connect with your audience.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="mt-1">
+            <svg class="w-6 h-6 text-cyan-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">Tech Solution</h3>
+            <p class="text-slate-600 mt-1 leading-relaxed">Simplify operations and drive growth with advanced tech solutions that improve efficiency, security and scalability in a digital-first world.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="mt-1">
+            <svg class="w-6 h-6 text-cyan-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">Media Solution</h3>
+            <p class="text-slate-600 mt-1 leading-relaxed">Refine your media strategy with creative solutions that amplify your message, ensuring your brand reaches the right audience at the right time.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="mt-1">
+            <svg class="w-6 h-6 text-cyan-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">Business Solution</h3>
+            <p class="text-slate-600 mt-1 leading-relaxed">Grow your business with solutions that streamline processes, enhance customer experience and increase profitability through innovation and planning.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-cyan-50/50 p-8 rounded-2xl flex flex-col items-center justify-center text-center border border-cyan-100 hover:shadow-lg transition-shadow">
+          <div class="text-cyan-600 mb-4">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+          </div>
+          <span class="font-bold text-slate-800">Brand Solution</span>
+        </div>
+
+        <div class="bg-cyan-50/50 p-8 rounded-2xl flex flex-col items-center justify-center text-center border border-cyan-100 hover:shadow-lg transition-shadow">
+          <div class="text-cyan-600 mb-4">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+          </div>
+          <span class="font-bold text-slate-800">Tech Solution</span>
+        </div>
+
+        <div class="bg-cyan-50/50 p-8 rounded-2xl flex flex-col items-center justify-center text-center border border-cyan-100 hover:shadow-lg transition-shadow">
+          <div class="text-cyan-600 mb-4">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" /></svg>
+          </div>
+          <span class="font-bold text-slate-800">Media Solution</span>
+        </div>
+
+        <div class="bg-cyan-50/50 p-8 rounded-2xl flex flex-col items-center justify-center text-center border border-cyan-100 hover:shadow-lg transition-shadow">
+          <div class="text-cyan-600 mb-4">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+          </div>
+          <span class="font-bold text-slate-800">Business Solution</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WORK / PORTFOLIO ========== -->
+<section id="work" class="py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-6 text-center md:text-left">
+            <div class="max-w-xl">
+                <div class="text-[#28b8d9] font-black text-[10px] uppercase tracking-[0.3em] mb-4">Our Expertise</div>
+                <h2 class="font-display text-4xl md:text-5xl font-extrabold text-[#04131a] leading-tight">
+                    Creative <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#16598a] to-[#28b8d9]">Pillars.</span>
+                </h2>
+            </div>
+            <p class="text-slate-400 font-medium text-sm max-w-xs">High-impact digital solutions designed to scale brands in Mumbai and beyond.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="group project-card relative h-[450px] md:h-[550px] rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800" class="project-img absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Graphic Design">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#04131a] via-[#04131a]/40 to-transparent flex flex-col justify-end p-10">
+                    <span class="text-[#28b8d9] text-[10px] font-black uppercase tracking-widest mb-3">Identity • Branding</span>
+                    <h3 class="text-white text-3xl font-black mb-6 tracking-tight">Graphic Design</h3>
+                    <div class="flex items-center justify-between">
+                        <p class="text-slate-300 text-xs font-medium max-w-[150px]">Visual storytelling that builds brand authority.</p>
+                        <a href="{% url 'graphic_design' %}" class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center hover:bg-[#28b8d9] hover:text-white transition-all shadow-lg group/btn">
+                            <svg class="w-5 h-5 text-[#04131a] group-hover/btn:text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<div class="group project-card relative h-[450px] md:h-[550px] rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2">
+    
+    <div class="swiper webCardSwiper absolute inset-0 w-full h-full">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide relative">
+                <img src="https://mkcosmetics.in/wp-content/uploads/2025/12/Untitled-design-33.png" class="w-full h-full object-cover">
+                <div class="absolute top-8 left-8 z-50">
+                    <span class="px-4 py-2 bg-black/30 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-widest">MK Cosmetics</span>
+                </div>
+            </div>
+
+            <div class="swiper-slide relative">
+                <img src="https://technorub.com/wp-content/uploads/elementor/thumbs/Untitled-design-16-r1th2joykvm6r4sgqbt40ygwn1yyw5tj3z70firng0.png" class="w-full h-full object-cover">
+                <div class="absolute top-8 left-8 z-50">
+                    <span class="px-4 py-2 bg-black/30 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-widest">TechnoRub</span>
+                </div>
+            </div>
+
+            <div class="swiper-slide relative">
+                <img src="https://ayurpanchamhealthcare.in/wp-content/uploads/2025/12/Ayurpancham-Logo-02.webp" class="w-full h-full object-cover">
+                <div class="absolute top-8 left-8 z-50">
+                    <span class="px-4 py-2 bg-black/30 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-widest">AyurPancham</span>
+                </div>
+            </div>
+
+            <div class="swiper-slide relative">
+                <img src="https://thyskool.com/wp-content/uploads/2025/05/thyskool.png-1-e1750688285269.png" class="w-full h-full object-cover">
+                <div class="absolute top-8 left-8 z-50">
+                    <span class="px-4 py-2 bg-black/30 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-widest">ThySkool</span>
+                </div>
+            </div>
+
+            <div class="swiper-slide relative">
+                <img src="https://rameshelectricalandplumbing.in/wp-content/uploads/2024/08/male-electrician-works-switchboard-with-electrical-connecting-cable-1-scaled-e1723553566769-1432x1536.jpg" class="w-full h-full object-cover">
+                <div class="absolute top-8 left-8 z-50">
+                    <span class="px-4 py-2 bg-black/30 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-widest">Ramesh Electrical</span>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="swiper-pagination !bottom-32 !text-left !px-10"></div>
+    </div>
+
+    <div class="absolute inset-0 bg-gradient-to-t from-[#16598a] via-transparent to-transparent flex flex-col justify-end p-10 pointer-events-none z-40">
+        <span class="text-[#28b8d9] text-[10px] font-black uppercase tracking-widest mb-3">Live Ecosystems</span>
+        <h3 class="text-white text-3xl font-black mb-2 tracking-tight">Web Development</h3>
+        <p class="text-slate-200 text-xs font-medium max-w-[200px]">Interactive showcase of high-performance business engines.</p>
+    </div>
+</div>
+
+
+
+
+            <div class="group project-card relative h-[450px] md:h-[550px] rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800" class="project-img absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Social Media">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#28b8d9] via-[#28b8d9]/20 to-transparent flex flex-col justify-end p-10">
+                    <span class="text-white text-[10px] font-black uppercase tracking-widest mb-3">Marketing • Growth</span>
+                    <h3 class="text-white text-3xl font-black mb-6 tracking-tight">Social Media</h3>
+                    <div class="flex items-center justify-between">
+                        <p class="text-white text-xs font-medium max-w-[150px]">Viral strategies to dominate the social landscape.</p>
+                        <a href="{% url 'social_media' %}" class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center hover:bg-[#16598a] hover:text-white transition-all shadow-lg group/btn">
+                            <svg class="w-5 h-5 text-[#04131a] group-hover/btn:text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-16 text-center">
+             <a href="{% url 'contact.html' %}" class="inline-flex items-center gap-3 text-sm font-black uppercase tracking-widest text-[#16598a] hover:text-[#28b8d9] transition-all group">
+                View Detailed Case Studies 
+                <span class="w-12 h-px bg-slate-200 group-hover:w-20 group-hover:bg-[#28b8d9] transition-all"></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Premium Hover Shadow for the whole card */
+    .project-card:hover {
+        box-shadow: 0 40px 80px -15px rgba(22, 89, 138, 0.2);
+    }
+</style>
+
+
+
+<section class="bg-white py-12 px-4 sm:px-6 md:px-12 lg:px-24">
+  <div class="max-w-7xl mx-auto">
+    
+    <div class="text-center mb-10">
+      <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Why Only <span class="relative inline-block text-cyan-600">
+          WebPro Arts?
+          <span class="absolute bottom-0 left-0 w-full h-1 bg-cyan-400 rounded-full"></span>
+        </span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+      
+      <div class="group flex flex-col items-center text-center p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-cyan-50/50 hover:border-cyan-200 hover:shadow-xl transition-all duration-300">
+        <div class="text-cyan-600 mb-4 group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-10 h-10 md:w-14 md:h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+          </svg>
+        </div>
+        <h3 class="text-sm md:text-lg font-bold text-slate-800 leading-snug">Privacy and <br class="hidden md:block"> Data Security</h3>
+      </div>
+
+      <div class="group flex flex-col items-center text-center p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-cyan-50/50 hover:border-cyan-200 hover:shadow-xl transition-all duration-300">
+        <div class="text-cyan-600 mb-4 group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-10 h-10 md:w-14 md:h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+          </svg>
+        </div>
+        <h3 class="text-sm md:text-lg font-bold text-slate-800 leading-snug">VIP <br class="hidden md:block"> Support</h3>
+      </div>
+
+      <div class="group flex flex-col items-center text-center p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-cyan-50/50 hover:border-cyan-200 hover:shadow-xl transition-all duration-300">
+        <div class="text-cyan-600 mb-4 group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-10 h-10 md:w-14 md:h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+          </svg>
+        </div>
+        <h3 class="text-sm md:text-lg font-bold text-slate-800 leading-snug">Experienced <br class="hidden md:block"> Team</h3>
+      </div>
+
+      <div class="group flex flex-col items-center text-center p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-cyan-50/50 hover:border-cyan-200 hover:shadow-xl transition-all duration-300">
+        <div class="text-cyan-600 mb-4 group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-10 h-10 md:w-14 md:h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V19.875c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+          </svg>
+        </div>
+        <h3 class="text-sm md:text-lg font-bold text-slate-800 leading-snug">Result <br class="hidden md:block"> Marketing</h3>
+      </div>
+
+      <div class="group flex flex-col items-center text-center p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-cyan-50/50 hover:border-cyan-200 hover:shadow-xl transition-all duration-300">
+        <div class="text-cyan-600 mb-4 group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-10 h-10 md:w-14 md:h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+          </svg>
+        </div>
+        <h3 class="text-sm md:text-lg font-bold text-slate-800 leading-snug">In-house <br class="hidden md:block"> Team</h3>
+      </div>
+
+      <div class="group flex flex-col items-center text-center p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-cyan-50/50 hover:border-cyan-200 hover:shadow-xl transition-all duration-300">
+        <div class="text-cyan-600 mb-4 group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-10 h-10 md:w-14 md:h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+          </svg>
+        </div>
+        <h3 class="text-sm md:text-lg font-bold text-slate-800 leading-snug">Quality Lead <br class="hidden md:block"> Generation</h3>
+      </div>
+
+      <div class="group flex flex-col items-center text-center p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-cyan-50/50 hover:border-cyan-200 hover:shadow-xl transition-all duration-300">
+        <div class="text-cyan-600 mb-4 group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-10 h-10 md:w-14 md:h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+          </svg>
+        </div>
+        <h3 class="text-sm md:text-lg font-bold text-slate-800 leading-snug">Unlimited <br class="hidden md:block"> Revisions</h3>
+      </div>
+
+      <div class="group flex flex-col items-center text-center p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-cyan-50/50 hover:border-cyan-200 hover:shadow-xl transition-all duration-300">
+        <div class="text-cyan-600 mb-4 group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-10 h-10 md:w-14 md:h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+          </svg>
+        </div>
+        <h3 class="text-sm md:text-lg font-bold text-slate-800 leading-snug">Personalised <br class="hidden md:block"> Approach</h3>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<section class="py-24 bg-[#000000] text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tighter uppercase">
+                Digital <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#16598a] to-[#28b8d9]">Dominance.</span>
+            </h2>
+            <p class="text-slate-400 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
+                We bridge the gap between imagination and ROI. From <strong>Custom Web Development</strong> to <strong>Surgical Ad Targeting</strong>, WebPro Arts deploys growth-first systems that dominate the digital landscape.
+            </p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-4 h-auto lg:h-[550px] w-full">
+            
+            <div class="group relative flex-1 lg:hover:[flex:5] transition-all duration-700 ease-in-out overflow-hidden rounded-[2.5rem] border border-white/10 h-[350px] lg:h-full cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt="Web Development">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 lg:rotate-[-90deg] lg:origin-left lg:left-12 lg:bottom-12 whitespace-nowrap group-hover:opacity-0 transition-opacity">
+                    <h4 class="text-xl font-bold uppercase tracking-widest text-white/80">Web Development</h4>
+                </div>
+                <div class="absolute inset-0 p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    <span class="text-[#28b8d9] font-black text-[10px] uppercase tracking-[0.3em] mb-2">Build & Scale</span>
+                    <h4 class="text-2xl font-bold text-white mb-3">Custom Architecture</h4>
+                    <p class="text-sm text-slate-300 max-w-xs">Engineering high-speed Next.js and React platforms with seamless API integrations and intuitive UX/UI design.</p>
+                </div>
+            </div>
+
+            <div class="group relative flex-1 lg:hover:[flex:5] transition-all duration-700 ease-in-out overflow-hidden rounded-[2.5rem] border border-white/10 h-[350px] lg:h-full cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1557838923-2985c318be48?q=80&w=800" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt="SEO">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 lg:rotate-[-90deg] lg:origin-left lg:left-12 lg:bottom-12 whitespace-nowrap group-hover:opacity-0 transition-opacity">
+                    <h4 class="text-xl font-bold uppercase tracking-widest text-white/80">SEO & Marketing</h4>
+                </div>
+                <div class="absolute inset-0 p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    <span class="text-[#28b8d9] font-black text-[10px] uppercase tracking-[0.3em] mb-2">Search Authority</span>
+                    <h4 class="text-2xl font-bold text-white mb-3">Digital Marketing</h4>
+                    <p class="text-sm text-slate-300 max-w-xs">Dominating search engine result pages through deep-tech technical SEO, keyword gap analysis, and content strategy.</p>
+                </div>
+            </div>
+
+            <div class="group relative flex-1 lg:hover:[flex:5] transition-all duration-700 ease-in-out overflow-hidden rounded-[2.5rem] border border-white/10 h-[350px] lg:h-full cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=800" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt="Video Editing">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 lg:rotate-[-90deg] lg:origin-left lg:left-12 lg:bottom-12 whitespace-nowrap group-hover:opacity-0 transition-opacity">
+                    <h4 class="text-xl font-bold uppercase tracking-widest text-white/80">Video Editing</h4>
+                </div>
+                <div class="absolute inset-0 p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    <span class="text-[#28b8d9] font-black text-[10px] uppercase tracking-[0.3em] mb-2">Cinematic Stories</span>
+                    <h4 class="text-2xl font-bold text-white mb-3">High-Impact Reels</h4>
+                    <p class="text-sm text-slate-300 max-w-xs">Transforming raw footage into scroll-stopping professional narratives for Instagram, YouTube, and TV Ads.</p>
+                </div>
+            </div>
+
+            <div class="group relative flex-1 lg:hover:[flex:5] transition-all duration-700 ease-in-out overflow-hidden rounded-[2.5rem] border border-white/10 h-[350px] lg:h-full cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt="Paid Ads">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 lg:rotate-[-90deg] lg:origin-left lg:left-12 lg:bottom-12 whitespace-nowrap group-hover:opacity-0 transition-opacity">
+                    <h4 class="text-xl font-bold uppercase tracking-widest text-white/80">Paid Advertising</h4>
+                </div>
+                <div class="absolute inset-0 p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    <span class="text-[#28b8d9] font-black text-[10px] uppercase tracking-[0.3em] mb-2">ROI Maximization</span>
+                    <h4 class="text-2xl font-bold text-white mb-3">Google & Meta Ads</h4>
+                    <p class="text-sm text-slate-300 max-w-xs">Surgical precision targeting and budget management to ensure every click turns into high-value revenue.</p>
+                </div>
+            </div>
+
+            <div class="group relative flex-1 lg:hover:[flex:5] transition-all duration-700 ease-in-out overflow-hidden rounded-[2.5rem] border border-white/10 h-[350px] lg:h-full cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt="Branding">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 lg:rotate-[-90deg] lg:origin-left lg:left-12 lg:bottom-12 whitespace-nowrap group-hover:opacity-0 transition-opacity">
+                    <h4 class="text-xl font-bold uppercase tracking-widest text-white/80">Brand Identity</h4>
+                </div>
+                <div class="absolute inset-0 p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    <span class="text-[#28b8d9] font-black text-[10px] uppercase tracking-[0.3em] mb-2">Visual Soul</span>
+                    <h4 class="text-2xl font-bold text-white mb-3">Graphic Design</h4>
+                    <p class="text-sm text-slate-300 max-w-xs">Crafting premium logos and brand identities that create psychological trust and market differentiation.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<section class="py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-6xl font-extrabold text-[#04131a] mb-6">
+                What Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#16598a] to-[#28b8d9]">Clients Say</span>
+            </h2>
+            <p class="text-slate-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+                We take pride in delivering innovative digital marketing solutions that drive results.
+            </p>
+            
+            <button id="openReviewModal" class="mt-8 px-8 py-4 bg-[#16598a] text-white font-bold rounded-full hover:bg-[#28b8d9] transition-all shadow-lg hover:shadow-[#28b8d9]/20 transform hover:-translate-y-1">
+                Share Your Experience
+            </button>
+        </div>
+
+        <div class="max-w-5xl mx-auto">
+             <div class="elfsight-app-1c08b0e0-1d42-411b-bd2c-4c5c7c5ac6f4" data-elfsight-app-lazy></div>
+        </div>
+
+        </div>
+</section>
+<style>
+    /* To hide specific parts of the Elfsight widget */
+[class*="elfsight-app"] .eapps-google-reviews-header {
+    display: none !important; /* Hides the top "Google Rating" header */
+}
+
+[class*="elfsight-app"] .eapps-google-reviews-item-rating {
+    color: #28b8d9 !important; /* Changes star colors to your cyan-blue */
+}
+
+[class*="elfsight-app"] .eapps-google-reviews-item {
+    background-color: #f8fafc !important; /* Changes the card background */
+    border-radius: 2rem !important; /* Matches your site's rounded style */
+}
+</style>
+
+
+<section class="py-24 bg-slate-50 px-4 md:px-12 lg:px-24">
+  <div class="max-w-7xl mx-auto">
+    
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4">
+        Customised Solutions For <span class="text-cyan-600">Industries</span>
+      </h2>
+      <p class="text-slate-500 font-medium">Killer results and unbeatable client service</p>
+      <div class="w-24 h-1 bg-cyan-500 mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      
+      <div class="group relative h-64 md:h-80 overflow-hidden rounded-3xl bg-slate-200 shadow-lg cursor-pointer">
+        <img src="https://i.pinimg.com/736x/b4/d3/ee/b4d3ee08a66ba4ed844533eb8d706516.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Restaurant">
+        <div class="absolute inset-0 bg-gradient-to-t from-cyan-900/90 via-cyan-900/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-4 text-center">
+          <h3 class="text-white font-bold text-sm md:text-xl uppercase tracking-wider">Food industry</h3>
+          <div class="h-1 w-0 group-hover:w-full bg-cyan-400 transition-all duration-300 mt-2 mx-auto"></div>
+        </div>
+      </div>
+
+      <div class="group relative h-64 md:h-80 overflow-hidden rounded-3xl bg-slate-200 shadow-lg cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=500" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Manufacturing">
+        <div class="absolute inset-0 bg-gradient-to-t from-cyan-900/90 via-cyan-900/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-4 text-center">
+          <h3 class="text-white font-bold text-sm md:text-xl uppercase tracking-wider">Manufacturing</h3>
+          <div class="h-1 w-0 group-hover:w-full bg-cyan-400 transition-all duration-300 mt-2 mx-auto"></div>
+        </div>
+      </div>
+
+      <div class="group relative h-64 md:h-80 overflow-hidden rounded-3xl bg-slate-200 shadow-lg cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=500" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Real Estate">
+        <div class="absolute inset-0 bg-gradient-to-t from-cyan-900/90 via-cyan-900/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-4 text-center">
+          <h3 class="text-white font-bold text-sm md:text-xl uppercase tracking-wider">Real Estate</h3>
+          <div class="h-1 w-0 group-hover:w-full bg-cyan-400 transition-all duration-300 mt-2 mx-auto"></div>
+        </div>
+      </div>
+
+      <div class="group relative h-64 md:h-80 overflow-hidden rounded-3xl bg-slate-200 shadow-lg cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=500" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Entertainment">
+        <div class="absolute inset-0 bg-gradient-to-t from-cyan-900/90 via-cyan-900/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-4 text-center">
+          <h3 class="text-white font-bold text-sm md:text-xl uppercase tracking-wider">Entertainment</h3>
+          <div class="h-1 w-0 group-hover:w-full bg-cyan-400 transition-all duration-300 mt-2 mx-auto"></div>
+        </div>
+      </div>
+
+      <div class="group relative h-64 md:h-80 overflow-hidden rounded-3xl bg-slate-200 shadow-lg cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=500" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="School">
+        <div class="absolute inset-0 bg-gradient-to-t from-cyan-900/90 via-cyan-900/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-4 text-center">
+          <h3 class="text-white font-bold text-sm md:text-xl uppercase tracking-wider">Education</h3>
+          <div class="h-1 w-0 group-hover:w-full bg-cyan-400 transition-all duration-300 mt-2 mx-auto"></div>
+        </div>
+      </div>
+
+      <div class="group relative h-64 md:h-80 overflow-hidden rounded-3xl bg-slate-200 shadow-lg cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=500" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Healthcare">
+        <div class="absolute inset-0 bg-gradient-to-t from-cyan-900/90 via-cyan-900/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-4 text-center">
+          <h3 class="text-white font-bold text-sm md:text-xl uppercase tracking-wider">Healthcare</h3>
+          <div class="h-1 w-0 group-hover:w-full bg-cyan-400 transition-all duration-300 mt-2 mx-auto"></div>
+        </div>
+      </div>
+
+      <div class="group relative h-64 md:h-80 overflow-hidden rounded-3xl bg-slate-200 shadow-lg cursor-pointer">
+        <img src="https://businessfinancing.co.uk/wp-content/uploads/08_Most-Popular-Consumer-Brand-in-Every-Country_Fashion-HD.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Preschool">
+        <div class="absolute inset-0 bg-gradient-to-t from-cyan-900/90 via-cyan-900/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-4 text-center">
+          <h3 class="text-white font-bold text-sm md:text-xl uppercase tracking-wider">Fashion & Cosmetics</h3>
+          <div class="h-1 w-0 group-hover:w-full bg-cyan-400 transition-all duration-300 mt-2 mx-auto"></div>
+        </div>
+      </div>
+
+      <div class="group relative h-64 md:h-80 overflow-hidden rounded-3xl bg-slate-200 shadow-lg cursor-pointer">
+        <img src="https://media.istockphoto.com/id/1203543894/photo/trees-and-coins-in-glass-bottles-stacked-coins-red-arrows-placed-as-graphs-or-charts.jpg?s=170667a&w=0&k=20&c=Db15v0cZ43LL20PYaLoiQ31W3bNvelyL0AgzrnK5-LI=" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Cake Shop">
+        <div class="absolute inset-0 bg-gradient-to-t from-cyan-900/90 via-cyan-900/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-4 text-center">
+          <h3 class="text-white font-bold text-sm md:text-xl uppercase tracking-wider">Finance & Investment</h3>
+          <div class="h-1 w-0 group-hover:w-full bg-cyan-400 transition-all duration-300 mt-2 mx-auto"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- ========== CONTACT ========== -->
+
+<section class="py-20 px-6 bg-slate-50">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-black text-[#16598a] mb-4 uppercase tracking-tight">
+            Ready to scale your brand?
+        </h2>
+        <p class="text-slate-600 text-lg mb-10 max-w-2xl mx-auto">
+            From high-end video production to full-scale digital branding, 
+            **WebProArts** is here to bring your vision to life. Let's discuss your next big idea.
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="{% url 'contact.html' %}" 
+               class="px-10 py-5 bg-[#16598a] text-white font-bold rounded-2xl shadow-xl hover:bg-[#28b8d9] hover:-translate-y-1 transition-all uppercase tracking-widest text-sm">
+                Get a Free Quote <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+            
+            <a href="mailto:webproarts@gmail.com" 
+               class="px-10 py-5 bg-white text-[#16598a] font-bold rounded-2xl border border-slate-200 hover:bg-slate-100 transition-all uppercase tracking-widest text-sm">
+                Email Us Directly
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="bg-white py-20 px-6 font-sans">
+    <div class="max-w-3xl mx-auto">
+        
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-[#1A2238] mb-4">Frequently Asked <span class="text-[#16598a]">Questions</span></h2>
+            <div class="w-16 h-1.5 bg-[#16598a] mx-auto mb-6 rounded-full"></div>
+            <p class="text-gray-600 text-lg">Your guide to our development, design, and digital growth services.</p>
+        </div>
+
+        <div class="space-y-4">
+            
+            <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50 hover:border-[#16598a] transition-all duration-300">
+                <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                    <span class="font-bold text-lg">What services does WebProArts specialize in?</span>
+                    <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <p class="p-5 text-gray-600 border-t border-gray-200 bg-white leading-relaxed">
+                        We are a full-service digital agency specializing in <strong>Custom Web Development </strong>, UI/UX Design, SEO Optimization, Digital Marketing, and Cinematic Video Editing.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50 hover:border-[#4169E1] transition-all duration-300">
+                <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                    <span class="font-bold text-lg">What is your typical project timeline?</span>
+                    <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <p class="p-5 text-gray-600 border-t border-gray-200 bg-white leading-relaxed">
+                        Timelines vary: <strong>Landing Pages</strong> (1-2 weeks), <strong>Standard Business Sites</strong> (4-5 weeks), and <strong>SaaS/E-commerce platforms</strong> (8-12 weeks).
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50 hover:border-[#4169E1] transition-all duration-300">
+                <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                    <span class="font-bold text-lg">Do you help with brand identity and logo design?</span>
+                    <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <p class="p-5 text-gray-600 border-t border-gray-200 bg-white leading-relaxed">
+                        Yes! We create cohesive brand identities, including professional <strong>Logo Design</strong>, typography, and color palettes that represent your business values.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50 hover:border-[#4169E1] transition-all duration-300">
+                <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                    <span class="font-bold text-lg">Can you build custom E-commerce stores?</span>
+                    <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <p class="p-5 text-gray-600 border-t border-gray-200 bg-white leading-relaxed">
+                        Absolutely. We build high-converting stores using <strong>WordPress</strong> for quick launches or <strong>Custom Django</strong> for large-scale, unique retail needs.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50 hover:border-[#4169E1] transition-all duration-300">
+                <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                    <span class="font-bold text-lg">Will my website work on all mobile devices?</span>
+                    <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <p class="p-5 text-gray-600 border-t border-gray-200 bg-white leading-relaxed">
+                        Yes. We follow a <strong>mobile-first</strong> philosophy. Every site is rigorously tested on phones, tablets, and desktops before delivery.
+                    </p>
+                </div>
+            </div>
+
+            <div id="more-faqs" class="hidden space-y-4 pt-4">
+                
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                    <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                        <span class="font-bold text-lg">How do you ensure my website is secure?</span>
+                        <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 text-gray-600 border-t border-gray-200 bg-white">
+                            We use SSL encryption, secure Django frameworks, and follow industry best practices for database security and data protection.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                    <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                        <span class="font-bold text-lg">Can I update my website content easily?</span>
+                        <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 text-gray-600 border-t border-gray-200 bg-white">
+                            Yes..  We provide easy-to-use <strong>Admin Dashboards</strong>but in Django Only. You can change text, upload images, and add blog posts without writing code.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                    <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                        <span class="font-bold text-lg">What types of video content do you edit?</span>
+                        <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 text-gray-600 border-t border-gray-200 bg-white">
+                            We edit everything from <strong>Social Media Reels/Ads</strong> to corporate documentaries, YouTube content, and product explainers.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                    <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                        <span class="font-bold text-lg">Do you provide hosting and domain services?</span>
+                        <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 text-gray-600 border-t border-gray-200 bg-white">
+                            We assist in choosing the best hosting (Hostinger, AWS, or DigitalOcean) and manage the setup of your professional domain names.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                    <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                        <span class="font-bold text-lg">Is SEO included in the development?</span>
+                        <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 text-gray-600 border-t border-gray-200 bg-white">
+                            Yes. Every build includes <strong>Technical SEO</strong> (speed optimization, sitemaps, and meta-data) to help you rank on Google from Day 1.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                    <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                        <span class="font-bold text-lg">Why do you use Django?</span>
+                        <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 text-gray-600 border-t border-gray-200 bg-white">
+                            Django is a powerhouse for security and scalability. It allows us to build complex backends that grow as your business grows.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                    <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                        <span class="font-bold text-lg">What happens if I have an issue after launch?</span>
+                        <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 text-gray-600 border-t border-gray-200 bg-white">
+                            We provide 30 days of <strong>free maintenance</strong> after launch. After that, we offer monthly support plans to keep things updated.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                    <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                        <span class="font-bold text-lg">How many revisions do I get?</span>
+                        <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 text-gray-600 border-t border-gray-200 bg-white">
+                            Most packages include 2-3 rounds of revisions during the design stage to ensure you are 100% happy with the look and feel.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                    <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                        <span class="font-bold text-lg">Do you work with global clients?</span>
+                        <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 text-gray-600 border-t border-gray-200 bg-white">
+                            Yes. WebProArts is a remote-first agency. We use tools like Slack and Zoom to collaborate with clients worldwide.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                    <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                        <span class="font-bold text-lg">How much do your services cost?</span>
+                        <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 text-gray-600 border-t border-gray-200 bg-white">
+                            Every project is unique. We provide custom quotes after a free discovery call to ensure the price matches your specific goals.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                    <button class="w-full flex justify-between items-center p-5 text-left text-[#1A2238] focus:outline-none" onclick="toggleFAQ(this)">
+                        <span class="font-bold text-lg">How do I get started?</span>
+                        <svg class="w-6 h-6 text-[#4169E1] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-5 text-gray-600 border-t border-gray-200 bg-white">
+                            Simply use our contact form or email us. We’ll schedule a quick call to discuss your vision and provide a roadmap.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <button id="show-more-btn" onclick="showAllFaqs()" class="bg-[#16598a] text-white px-10 py-4 rounded-full font-bold hover:bg-[#28b8d9] transition-all transform hover:scale-105 shadow-xl">
+                    See All More Questions ↓
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    function toggleFAQ(button) {
+        const answer = button.nextElementSibling;
+        const icon = button.querySelector('svg');
+        
+        // Closes others when one opens
+        document.querySelectorAll('.faq-answer').forEach(el => {
+            if (el !== answer) {
+                el.style.maxHeight = null;
+                el.previousElementSibling.querySelector('svg').classList.remove('rotate-180');
+            }
+        });
+
+        if (answer.style.maxHeight) {
+            answer.style.maxHeight = null;
+            icon.classList.remove('rotate-180');
+        } else {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+            icon.classList.add('rotate-180');
+        }
+    }
+
+    function showAllFaqs() {
+        const moreSection = document.getElementById('more-faqs');
+        const btn = document.getElementById('show-more-btn');
+        moreSection.classList.toggle('hidden');
+        if (moreSection.classList.contains('hidden')) {
+            btn.innerHTML = 'See All 11 More Questions ↓';
+        } else {
+            btn.innerHTML = 'Show Less ↑';
+        }
+    }
+</script>
+
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-[#000000] text-white pt-16 pb-8 border-t border-white/5 font-sans">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-16 items-start">
+            
+            <div class="flex flex-col items-center lg:items-start">
+                <div class="mb-6 flex justify-center lg:justify-start">
+                    <img src="{% static 'img/logo.jpeg' %}" 
+                         alt="Web Pro Arts Logo" 
+                         class="h-16 w-auto block object-contain">
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed max-w-xs text-center lg:text-left">
+                    By optimizing content and leveraging relevant keywords, we secure your brand's prominent position in the digital landscape.
+                </p>
+            </div>
+
+            <div class="border-t border-white/5 lg:border-none pt-6 lg:pt-0">
+                <div class="flex justify-between items-center lg:block cursor-pointer lg:cursor-default group" onclick="toggleFooterAcc(this)">
+                    <h4 class="text-xs font-black uppercase tracking-[0.2em] text-white mb-0 lg:mb-8">Services</h4>
+                    <span class="lg:hidden text-slate-500 transition-transform duration-300 icon-plus">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12" stroke-width="2"></path></svg>
+                    </span>
+                </div>
+                <ul class="hidden lg:block mt-6 lg:mt-0 space-y-4 text-sm text-slate-400 accordion-content text-center lg:text-left">
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'graphic_design' %}">Graphics Design</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'web_design' %}">Website Design</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'video_editing' %}">Video Editing</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'social_media' %}">Social Media Marketing</a></li>
+                    <li class="hover:text-[#28b8d9] transition-colors"><a href="{% url 'digital_marketing' %}">Digital Marketing</a></li>
+                </ul>
+            </div>
+
+            <div class="border-t border-white/5 lg:border-none pt-6 lg:pt-0">
+                <div class="flex justify-between items-center lg:block cursor-pointer lg:cursor-default group" onclick="toggleFooterAcc(this)">
+                    <h4 class="text-xs font-black uppercase tracking-[0.2em] text-white mb-0 lg:mb-8">Contact Us</h4>
+                    <span class="lg:hidden text-slate-500 transition-transform duration-300 icon-plus">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12" stroke-width="2"></path></svg>
+                    </span>
+                </div>
+                <div class="hidden lg:block mt-6 lg:mt-0 space-y-6 text-sm text-slate-400 accordion-content">
+                    <div class="flex flex-col lg:flex-row items-center lg:items-start gap-3 lg:gap-4 text-center lg:text-left">
+                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-[#28b8d9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <p class="leading-relaxed">Office no-2, Shastri Nagar, Vasai West,<br>Mumbai, India 401202</p>
+                    </div>
+
+                    <a href="mailto:webproarts@gmail.com" class="flex flex-col lg:flex-row items-center gap-3 lg:gap-4 group/link hover:text-white transition-colors text-center lg:text-left">
+                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 group-hover/link:bg-[#28b8d9]/10 transition-colors">
+                            <svg class="w-4 h-4 text-[#28b8d9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                        <span>webproarts@gmail.com</span>
+                    </a>
+
+                    <a href="tel:+919561635544" class="flex flex-col lg:flex-row items-center gap-3 lg:gap-4 group/link hover:text-white transition-colors text-center lg:text-left">
+                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 group-hover/link:bg-[#28b8d9]/10 transition-colors">
+                            <svg class="w-4 h-4 text-[#28b8d9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <span>+91 95616 35544</span>
+
+                    </a>
+                    
+                </div>
+            </div>
+
+
+            <div class="border-t border-white/5 lg:border-none pt-6 lg:pt-0 flex flex-col items-center lg:items-start">
+                <h4 class="text-xs font-black uppercase tracking-[0.2em] text-white mb-6">Subscribe Our Mail</h4>
+                
+                <div class="flex gap-4 mb-6">
+                    <a href="https://www.instagram.com/webproarts/" target="_blank" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] transition-all duration-300 group">
+                        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://linkedin.com/company/webproarts" target="_blank" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#0077b5] transition-all duration-300 group">
+                        <svg class="w-4 h-4 text-white fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+
+                <form class="relative w-full max-w-sm">
+                    <input type="email" placeholder="Your Email" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-[#28b8d9] transition-all text-white placeholder:text-slate-500">
+                    <button class="absolute right-2 top-2 bottom-2 bg-[#28b8d9] text-black font-black px-4 rounded-lg text-[10px] uppercase tracking-wider hover:bg-white transition-all">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="text-[10px] text-slate-500 mt-4 italic">Stay updated with our latest growth hacks.</p>
+            </div>
+        </div>
+
+        <div class="pt-10 mt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <p class="text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">
+                © 2020 <span class="text-white/80">Web Pro Arts</span>. All Rights Reserved.
+            </p>
+
+            <div class="flex gap-10 items-center">
+                <a href="{% url 'privacy_policy' %}" class="relative text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] hover:text-white transition-all group">
+                    Privacy Policy
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#28b8d9] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="{% url 'terms_of_service' %}" class="relative text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] hover:text-white transition-all group">
+                    Terms of Service
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-[#28b8d9] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+function toggleFooterAcc(el) {
+    if (window.innerWidth >= 1024) return;
+    const content = el.nextElementSibling;
+    const icon = el.querySelector('.icon-plus');
+    content.classList.toggle('hidden');
+    if (icon) {
+        icon.style.transform = !content.classList.contains('hidden') ? 'rotate(45deg)' : 'rotate(0deg)';
+    }
+}
+</script>
+<!-- ========== ALL SCRIPTS ========== -->
+<script>
+    // Services Swiper
+    var serviceSwiper = new Swiper(".serviceSwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: { delay: 4000, disableOnInteraction: false },
+        pagination: { el: ".serviceSwiper .swiper-pagination", clickable: true },
+        navigation: { nextEl: ".srv-next", prevEl: ".srv-prev" },
+        breakpoints: {
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            1024: { slidesPerView: 3, spaceBetween: 30 }
+        }
+    });
+
+    // Work Swiper
+    var workSwiper = new Swiper(".workSwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        pagination: { el: ".workSwiper .swiper-pagination", clickable: true },
+        breakpoints: {
+            768: { slidesPerView: 2, spaceBetween: 30 },
+            1024: { slidesPerView: 3, spaceBetween: 30 }
+        }
+    });
+
+    // Toggle extra projects
+    function toggleProjects() {
+        const extraArea = document.getElementById('extraProjects');
+        const btnText = document.getElementById('btnText');
+        if (extraArea.classList.contains('active')) {
+            extraArea.classList.remove('active');
+            btnText.innerText = "Explore All Projects";
+            document.getElementById('work').scrollIntoView({ behavior: 'smooth' });
+        } else {
+            extraArea.classList.add('active');
+            btnText.innerText = "Show Less";
+        }
+    }
+
+    // Contact form
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        const success = document.getElementById('successMessage');
+        btn.innerText = 'Processing...';
+        btn.disabled = true;
+        btn.style.opacity = '0.5';
+        setTimeout(() => {
+            this.classList.add('hidden');
+            success.classList.remove('hidden');
+        }, 1200);
+    });
+</script>
+
+
+
+
+
+<a href="https://wa.me/919561635544" target="_blank"
+   class="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105">
+
+    <!-- WhatsApp Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.52 3.48A11.94 11.94 0 0012.06 0C5.49 0 .16 5.33.16 11.9c0 2.1.55 4.15 1.6 5.95L0 24l6.31-1.65a11.83 11.83 0 005.75 1.47h.01c6.57 0 11.9-5.33 11.9-11.9 0-3.18-1.24-6.16-3.45-8.44zM12.07 21.5h-.01a9.6 9.6 0 01-4.89-1.33l-.35-.21-3.74.98 1-3.65-.23-.37a9.56 9.56 0 01-1.46-5.11c0-5.29 4.31-9.6 9.61-9.6 2.56 0 4.97 1 6.78 2.81a9.53 9.53 0 012.82 6.79c0 5.3-4.31 9.6-9.6 9.6zm5.3-7.2c-.29-.14-1.72-.85-1.98-.95-.27-.1-.47-.14-.67.14-.2.29-.77.95-.94 1.14-.17.2-.35.22-.64.07-.29-.14-1.23-.45-2.34-1.43-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.35.43-.52.14-.17.19-.29.29-.48.1-.2.05-.37-.02-.52-.07-.14-.67-1.61-.92-2.21-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.29-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.14.2 2.1 3.2 5.1 4.49.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.08 1.72-.7 1.96-1.37.24-.67.24-1.25.17-1.37-.07-.11-.27-.17-.56-.31z"/>
+    </svg>
+
+    <span class="hidden sm:inline font-semibold">Chat on WhatsApp</span>
+</a>
+
+<div class="fixed bottom-8 right-8 z-50">
+    <a href="{% url 'bot_pages' %}" class="group relative flex items-center justify-center w-16 h-16 bg-[#4169E1] rounded-full shadow-2xl hover:bg-[#1A2238] transition-all duration-300 transform hover:scale-110">
+        
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+        </svg>
+
+        <span class="absolute right-20 bg-white text-[#1A2238] border border-gray-200 px-4 py-2 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-bold pointer-events-none">
+           Chat with WebProArts Bot
+        </span>
+    </a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const swiper = new Swiper('.webCardSwiper', {
+            // Options
+            loop: true,
+            speed: 1000,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            effect: 'fade', // Use 'slide' if you want it to move sideways
+            fadeEffect: {
+                crossFade: true
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    });
+</script>
+
+
+
+<script src="https://elfsightcdn.com/platform.js" async></script>
+{%load static%}
+
+<div id="circle-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[10000] invisible opacity-0 transition-all duration-500 flex items-center justify-center">
+    <div class="absolute inset-0" onclick="toggleCircleMenu()"></div>
+    
+    <div class="relative w-80 h-80 flex items-center justify-center">
+        <button onclick="toggleCircleMenu()" class="z-[10001] bg-black text-white p-5 rounded-full shadow-2xl active:scale-90 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+
+        <a href="{% url 'digital_marketing' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 0deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Digital</span>
+        </a>
+
+        <a href="{% url 'web_design' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 72deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Design</span>
+        </a>
+
+        <a href="{% url 'graphic_design' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 144deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Graphics</span>
+        </a>
+
+        <a href="{% url 'social_media' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 216deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Social</span>
+        </a>
+
+        <a href="{% url 'video_editing' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 288deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Video</span>
+        </a>
+    </div>
+</div>
+
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 z-[9999] h-[75px] pb-safe shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+    <div class="flex justify-around items-center h-full max-w-lg mx-auto">
+        
+        <a href="/" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Home</span>
+        </a>
+
+        <button onclick="toggleCircleMenu()" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 focus:outline-none active:opacity-60 transition-opacity">
+            <div class="relative">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <span class="absolute -top-1 -right-1 w-2 h-2 bg-black rounded-full"></span>
+            </div>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Services</span>
+        </button>
+
+        <a href="{% url 'career' %}" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Career</span>
+        </a>
+
+        <a href="{% url 'about' %}" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">About</span>
+        </a>
+
+
+            <a href="https://wa.me/919561635544" target="_blank" class="flex flex-col items-center justify-center flex-1 h-full text-green-600 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span class="text-[10px] font-black mt-1 uppercase tracking-tighter">Chat</span>
+        </a>
+
+        
+    </div>
+</nav>
+<style>
+    .service-node {
+        transition: all 0.5s ease;
+        pointer-events: none;
+    }
+    #circle-menu:not(.invisible) .service-node {
+        pointer-events: auto;
+    }
+</style>
+
+
+<script>
+    function toggleCircleMenu() {
+        const menu = document.getElementById('circle-menu');
+        const nodes = document.querySelectorAll('.service-node');
+        const isOpening = menu.classList.contains('invisible');
+
+        if (isOpening) {
+            menu.classList.remove('invisible', 'opacity-0');
+            document.body.style.overflow = 'hidden'; // Stop background scroll
+            
+            nodes.forEach((node, i) => {
+                const angle = node.style.getPropertyValue('--angle');
+                // Move out 120px from center
+                node.style.transform = `rotate(${angle}) translateY(-120px) rotate(-${angle})`;
+                node.style.opacity = '1';
+                node.style.transition = `all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) ${i * 0.05}s`;
+            });
+        } else {
+            nodes.forEach((node) => {
+                node.style.transform = `rotate(0deg) translateY(0px) rotate(0deg)`;
+                node.style.opacity = '0';
+                node.style.transition = 'all 0.3s ease-in';
+            });
+            
+            setTimeout(() => {
+                menu.classList.add('invisible', 'opacity-0');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+    }
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/static/service-worker.js")
+    .then(() => console.log("SW registered"))
+    .catch(err => console.log(err));
+}
+</script>
+
+<script>
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  // Create your own button
+  const installBtn = document.createElement("button");
+  installBtn.innerText = "Install App";
+  installBtn.style.position = "fixed";
+  installBtn.style.bottom = "20px";
+  installBtn.style.right = "20px";
+  installBtn.style.padding = "10px 20px";
+  installBtn.style.background = "black";
+  installBtn.style.color = "white";
+
+  document.body.appendChild(installBtn);
+
+  installBtn.addEventListener("click", () => {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+      deferredPrompt = null;
+    });
+  });
+});
+</script>
+
+
+
+
+
+
+</body>
+</html>

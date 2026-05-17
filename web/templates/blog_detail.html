@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }} | Web Pro Arts</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        /* Custom scrollbar for a pro feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #16598a; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-white antialiased">
+    
+    <article class="max-w-4xl mx-auto px-5 sm:px-8 py-12 md:py-20">
+        <a href="{% url 'blogs' %}" class="group flex items-center gap-2 text-[10px] font-black uppercase text-slate-400 mb-8 md:mb-12 transition-colors hover:text-[#28b8d9]">
+            <span class="transition-transform group-hover:-translate-x-1">←</span> Back to Hub
+        </a>
+        
+        <div class="space-y-4 md:space-y-6 mb-10 md:mb-16">
+            <span class="text-[#28b8d9] font-black uppercase text-[10px] md:text-xs tracking-[0.2em] border-l-4 border-[#28b8d9] pl-3">
+                {{ post.category }}
+            </span>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-[#04131a] leading-[1.1] tracking-tighter">
+                {{ post.title }}
+            </h1>
+        </div>
+        
+        <div class="relative group mb-12 md:mb-20">
+            <div class="absolute -inset-1 bg-gradient-to-r from-[#28b8d9] to-[#16598a] rounded-[2rem] md:rounded-[4rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+            <img src="{{ post.image }}" 
+                 alt="{{ post.title }}"
+                 class="relative w-full h-[300px] sm:h-[400px] md:h-[550px] object-cover rounded-[2rem] md:rounded-[3.5rem] shadow-2xl border-4 md:border-[10px] border-white">
+        </div>
+        
+        <div class="prose prose-lg sm:prose-xl prose-slate max-w-none 
+                    prose-headings:text-[#16598a] prose-headings:font-black prose-headings:tracking-tight
+                    prose-strong:text-[#04131a] prose-strong:font-bold
+                    prose-p:text-slate-600 prose-p:leading-relaxed
+                    prose-li:text-slate-600
+                    prose-img:rounded-3xl prose-img:shadow-lg">
+            {{ post.content|safe }}
+        </div>
+
+        <div class="mt-16 md:mt-24 p-8 md:p-14 bg-[#04131a] rounded-[2.5rem] md:rounded-[4rem] text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-[#28b8d9] opacity-10 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+            
+            <div class="relative z-10">
+                <h4 class="text-2xl md:text-3xl font-black mb-4">Web Pro Arts Editorial</h4>
+                <p class="text-slate-400 text-sm md:text-lg leading-relaxed max-w-2xl">
+                    Expert strategies for modern digital brands. We don't just build websites; we engineer high-performance digital experiences. 
+                    <span class="text-[#28b8d9] block mt-4 font-bold cursor-pointer hover:underline">Work with us →</span>
+                </p>
+            </div>
+        </div>
+    </article>
+
+    {% load static %}
+    <footer class="bg-[#000000] text-white pt-16 pb-8 border-t border-white/5 font-sans">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-16 items-start">
+                
+                <div class="flex flex-col items-center lg:items-start">
+                    <div class="mb-6">
+                        <img src="{% static 'img/logo.jpeg' %}" alt="Web Pro Arts" class="h-14 w-auto block object-contain">
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-xs text-center lg:text-left">
+                        Securing your brand's prominent position in the digital landscape through elite design and AI-driven development.
+                    </p>
+                </div>
+
+                <div class="border-t border-white/10 lg:border-none pt-6 lg:pt-0">
+                    <div class="flex justify-between items-center lg:block cursor-pointer lg:cursor-default" onclick="toggleFooterAcc(this)">
+                        <h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-white lg:mb-8">Services</h4>
+                        <svg class="lg:hidden w-5 h-5 text-slate-500 transition-transform duration-300 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12" stroke-width="2"></path></svg>
+                    </div>
+                    <ul class="hidden lg:block mt-6 lg:mt-0 space-y-4 text-sm text-slate-400 text-center lg:text-left">
+                        <li class="hover:text-[#28b8d9] transition-colors"><a href="#">Graphics Design</a></li>
+                        <li class="hover:text-[#28b8d9] transition-colors"><a href="#">Website Design</a></li>
+                        <li class="hover:text-[#28b8d9] transition-colors"><a href="#">AI Development</a></li>
+                        <li class="hover:text-[#28b8d9] transition-colors"><a href="#">Digital Marketing</a></li>
+                    </ul>
+                </div>
+
+                <div class="border-t border-white/10 lg:border-none pt-6 lg:pt-0">
+                    <div class="flex justify-between items-center lg:block cursor-pointer lg:cursor-default" onclick="toggleFooterAcc(this)">
+                        <h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-white lg:mb-8">Contact</h4>
+                        <svg class="lg:hidden w-5 h-5 text-slate-500 transition-transform duration-300 icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12" stroke-width="2"></path></svg>
+                    </div>
+                    <div class="hidden lg:block mt-6 lg:mt-0 space-y-6 text-sm text-slate-400">
+                        <p class="text-center lg:text-left">Office no-2, Shastri Nagar,<br>Vasai West, Mumbai 401202</p>
+                        <a href="mailto:webproarts@gmail.com" class="block hover:text-[#28b8d9] text-center lg:text-left transition-colors italic">webproarts@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="border-t border-white/10 lg:border-none pt-6 lg:pt-0 flex flex-col items-center lg:items-start">
+                    <h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-white mb-6">Stay Updated</h4>
+                    <form class="relative w-full">
+                        <input type="email" placeholder="Your Email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:outline-none focus:border-[#28b8d9] text-white">
+                        <button class="absolute right-1 top-1 bottom-1 bg-[#28b8d9] text-black font-black px-4 rounded-lg text-[9px] uppercase tracking-wider">Join</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+                <p class="text-[9px] font-black text-slate-600 uppercase tracking-widest">
+                    © 2020 <span class="text-white/50">Web Pro Arts</span>. Built for the future.
+                </p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-[9px] font-black text-slate-600 uppercase hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="text-[9px] font-black text-slate-600 uppercase hover:text-white transition-colors">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    function toggleFooterAcc(el) {
+        if (window.innerWidth >= 1024) return;
+        const content = el.nextElementSibling;
+        const icon = el.querySelector('.icon-plus');
+        
+        // Close all other accordions (Optional, but cleaner)
+        // document.querySelectorAll('.icon-plus').forEach(i => i.style.transform = 'rotate(0deg)');
+
+        if (content.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            icon.style.transform = 'rotate(45deg)';
+        } else {
+            content.classList.add('hidden');
+            icon.style.transform = 'rotate(0deg)';
+        }
+    }
+    </script>
+
+
+
+<div id="circle-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[10000] invisible opacity-0 transition-all duration-500 flex items-center justify-center">
+    <div class="absolute inset-0" onclick="toggleCircleMenu()"></div>
+    
+    <div class="relative w-80 h-80 flex items-center justify-center">
+        <button onclick="toggleCircleMenu()" class="z-[10001] bg-black text-white p-5 rounded-full shadow-2xl active:scale-90 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+
+        <a href="{% url 'digital_marketing' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 0deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/11521/11521404.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Digital</span>
+        </a>
+
+        <a href="{% url 'web_design' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 72deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/13191/13191295.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Design</span>
+        </a>
+
+        <a href="{% url 'graphic_design' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 144deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Graphics</span>
+        </a>
+
+        <a href="{% url 'social_media' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 216deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Social</span>
+        </a>
+
+        <a href="{% url 'video_editing' %}" class="service-node absolute opacity-0 flex flex-col items-center" style="--angle: 288deg;">
+            <div class="bg-white p-4 rounded-full shadow-lg border border-slate-100 mb-1"><img src="https://cdn-icons-png.flaticon.com/512/4406/4406124.png" class="w-7 h-7"></div>
+            <span class="text-[10px] font-black uppercase text-black">Video</span>
+        </a>
+    </div>
+</div>
+
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 z-[9999] h-[75px] pb-safe shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+    <div class="flex justify-around items-center h-full max-w-lg mx-auto">
+        
+        <a href="/" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Home</span>
+        </a>
+
+        <button onclick="toggleCircleMenu()" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 focus:outline-none active:opacity-60 transition-opacity">
+            <div class="relative">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <span class="absolute -top-1 -right-1 w-2 h-2 bg-black rounded-full"></span>
+            </div>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Services</span>
+        </button>
+
+        <a href="{% url 'career' %}" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">Career</span>
+        </a>
+
+        <a href="{% url 'about' %}" class="flex flex-col items-center justify-center flex-1 h-full text-slate-900 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="text-[11px] font-bold mt-1 uppercase tracking-tight">About</span>
+        </a>
+
+
+            <a href="https://wa.me/919561635544" target="_blank" class="flex flex-col items-center justify-center flex-1 h-full text-green-600 active:opacity-60 transition-opacity">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span class="text-[10px] font-black mt-1 uppercase tracking-tighter">Chat</span>
+        </a>
+
+        
+    </div>
+</nav>
+<style>
+    .service-node {
+        transition: all 0.5s ease;
+        pointer-events: none;
+    }
+    #circle-menu:not(.invisible) .service-node {
+        pointer-events: auto;
+    }
+</style>
+
+
+<script>
+    function toggleCircleMenu() {
+        const menu = document.getElementById('circle-menu');
+        const nodes = document.querySelectorAll('.service-node');
+        const isOpening = menu.classList.contains('invisible');
+
+        if (isOpening) {
+            menu.classList.remove('invisible', 'opacity-0');
+            document.body.style.overflow = 'hidden'; // Stop background scroll
+            
+            nodes.forEach((node, i) => {
+                const angle = node.style.getPropertyValue('--angle');
+                // Move out 120px from center
+                node.style.transform = `rotate(${angle}) translateY(-120px) rotate(-${angle})`;
+                node.style.opacity = '1';
+                node.style.transition = `all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) ${i * 0.05}s`;
+            });
+        } else {
+            nodes.forEach((node) => {
+                node.style.transform = `rotate(0deg) translateY(0px) rotate(0deg)`;
+                node.style.opacity = '0';
+                node.style.transition = 'all 0.3s ease-in';
+            });
+            
+            setTimeout(() => {
+                menu.classList.add('invisible', 'opacity-0');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+    }
+</script>
+
+
+
+
+
+
+</body>
+</html>
